@@ -1,0 +1,16 @@
+# Env vars override: RAG_DB, EMBED_PROVIDER, EMBED_MODEL, SEARCH_MODE, RERANKER, RERANKER_MODEL
+
+db_path = "hrag.db"
+
+# Chunking: 400/60 was the best setting in local-rag-sqlite's evaluation.
+chunk_size = 400
+chunk_overlap = 60
+
+embed_provider = "local"        # local | hash | openai | gemini
+embed_model = ""
+
+top_k = 3
+mode = "hybrid+rerank"          # vector | keyword | hybrid | vector+rerank | hybrid+rerank
+pool = 20                       # candidates per retriever before fusion / reranking
+reranker = "cross-encoder"      # cross-encoder | none
+reranker_model = ""             # default: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
