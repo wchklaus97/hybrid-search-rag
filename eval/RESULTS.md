@@ -166,9 +166,9 @@ All are correct Chinese, but none uses the documents' term. Hong Kong policies f
 | no expansion, run 1 (section 1) | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.3 |
 | no expansion, run 2 (section 1) | 0.94 | 0.92 | 1.00 | 1.00 | 1.00 | 1.4 |
 | glossary + llm, run 1 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.3 |
-| glossary + llm, run 2 | 0.94 | 1.00 | 1.00 | 1.00 | 0.67 | 1.4 |
+| glossary + llm, run 2 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 | 1.4 |
 
-- **Run 2's one failure is a scorer miss.** For `parking-zh` the agent answered 「無法確定公司是否提供員工泊車位津貼。所有相關文檔似乎沒有直接提到…」, a correct refusal whose wording repo 3's scorer doesn't recognise. Read as a person would, both runs pass 17/17.
+- **Run 2 first scored 0.94 because of a scorer miss.** For `parking-zh` the agent answered 「無法確定公司是否提供員工泊車位津貼。所有相關文檔似乎沒有直接提到…」, a correct refusal whose wording repo 3's scorer didn't recognise (refuse 0.67). Repo 3 now accepts 無法確定 / 沒有直接 ([553371d](https://github.com/wchklaus97/agent-rag-pydantic-ai/commit/553371d)), and the re-scored run passes 17/17 ([agent-rescored.md](runs/agent-rescored.md)). The answers themselves were not re-run.
 - **`leak-en` passed with one search in both runs,** but both of the agent's queries contained "customer", which hybrid + rerank already handled. The agent drew easy queries this time, so this eval can't show the expansion gain; the replay above can.
 - **End to end, expansion broke nothing** and kept the agent at 1.3–1.4 searches per question. 17 questions × 2 runs is too small to show a gain.
 
