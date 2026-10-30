@@ -1,4 +1,4 @@
-"""hrag index build <folder>... | search "<q>" [--mode all] | eval | replay | agent-eval | index reset"""
+"""hrag index build <folder>... | search "<q>" [--mode all] [--expand glossary] | eval | replay | agent-eval | index reset"""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ from pathlib import Path
 
 from .config import load_config
 from .embed import HashEmbedder, get_embedder
+from .expand import EXPANDERS, CombinedExpander, LLMExpander, get_expander
 from .index import build_index
 from .rerank import get_reranker
 from .retrieve import MODES, Retriever
@@ -33,10 +34,42 @@ def _modes(reranker) -> list[str]:
     return [m for m in MODES if reranker or not m.endswith("+rerank")]
 
 
-def _temp_retriever(tmp: str, folders, cfg, embedder, reranker) -> Retriever:
+def _expanders(names: str, cfg) -> list[tuple[str, object]]:
+    """'none,glossary,llm,glossary+llm' -> [(name, expander or None), ...].
+
+    Each part is built once, so 'llm' and 'glossary+llm' share one translation cache and
+    never pay twice for the same query (or get two different translations of it).
+    """
+    parts: dict[str, object] = {}
+
+    def part(name: str):
+        if name not in parts:
+            parts[name] = get_expander(name, cfg.glossary, cfg.expand_model, cfg.expand_cache)
+        return parts[name]
+
+    result = []
+    for name in (n.strip() for n in names.split(",")):
+        result.append((name, CombinedExpander([part(p) for p in name.split("+")]) if "+" in name else part(name)))
+    return result
+
+
+def _report_llm_calls(expanders) -> None:
+    llms = {id(p): p for _, e in expanders for p in (e.parts if isinstance(e, CombinedExpander) else [e])
+            if isinstance(p, LLMExpander)}
+    for llm in llms.values():
+        print(f"{llm.name}: {llm.calls} new translations (API calls), cache: {llm.cache_path}")
+        if llm.dropped:
+            print(f"  dropped {len(llm.dropped)} translations that changed a number or currency: {sorted(llm.dropped)}")
+
+
+def _label(base: str, mode: str, expansion: str) -> str:
+    return f"{base} · **{mode}**" + ("" if expansion == "none" else f" · {expansion}")
+
+
+def _temp_store(tmp: str, folders, cfg, embedder) -> Store:
     store = Store(Path(tmp) / "eval.db", embedder.name, embedder.dim)
     build_index(folders, cfg, embedder, store)
-    return Retriever(store, embedder, reranker, cfg.pool)
+    return store
 
 
 # --- commands -----------------------------------------------------------------
@@ -60,7 +93,10 @@ def cmd_search(args, cfg) -> int:
         print("Index is empty. Run `hrag index build examples/harbour-lane` first.")
         return 1
     reranker = get_reranker(cfg.reranker, cfg.reranker_model)
-    retriever = Retriever(store, emb, reranker, cfg.pool)
+    expander = get_expander(args.expand or cfg.expand, cfg.glossary, cfg.expand_model, cfg.expand_cache)
+    retriever = Retriever(store, emb, reranker, cfg.pool, expander=expander)
+    for n, q in enumerate(retriever.queries(args.question)[1:], 1):
+        print(f"expanded x{n}: {q}")
     modes = _modes(reranker) if args.mode == "all" else [args.mode]
     for mode in modes:
         print(f"== {mode}")
@@ -78,6 +114,7 @@ def cmd_eval(args, cfg) -> int:
     cfg = replace(cfg, pool=args.pool or cfg.pool)
     qa = load_qa(args.qa)
     reranker = get_reranker(cfg.reranker, cfg.reranker_model)
+    expanders = _expanders(args.expand, cfg)
     results = []
     for corpus in args.corpus.split(","):
         for name in args.embed.split(","):
@@ -85,14 +122,16 @@ def cmd_eval(args, cfg) -> int:
             for size in [int(s) for s in args.sizes.split(",")]:
                 run_cfg = replace(cfg, chunk_size=size, chunk_overlap=int(size * 0.15))
                 with tempfile.TemporaryDirectory() as tmp:
-                    retriever = _temp_retriever(tmp, CORPORA[corpus], run_cfg, emb, reranker)
-                    n_chunks = retriever.store.count()
-                    for mode in _modes(reranker):
-                        label = f"{corpus} ({n_chunks} chunks) · {name.strip()} · {size} · pool {cfg.pool} · **{mode}**"
-                        r = evaluate_mode(retriever, qa, mode, args.k, label)
-                        print(f"  {label:<70} hit@{args.k}={r.hitk:.2f}  MRR={r.mrr:.2f}")
-                        results.append(r)
-                    retriever.store.close()
+                    store = _temp_store(tmp, CORPORA[corpus], run_cfg, emb)
+                    base = f"{corpus} ({store.count()} chunks) · {name.strip()} · {size} · pool {cfg.pool}"
+                    for expansion, expander in expanders:
+                        retriever = Retriever(store, emb, reranker, cfg.pool, expander=expander)
+                        for mode in _modes(reranker):
+                            label = _label(base, mode, expansion)
+                            r = evaluate_mode(retriever, qa, mode, args.k, label)
+                            print(f"  {label:<70} hit@{args.k}={r.hitk:.2f}  MRR={r.mrr:.2f}")
+                            results.append(r)
+                    store.close()
     table = results_table(results, args.k, len(qa))
     print("\n" + table)
     if args.show_misses:
@@ -101,6 +140,7 @@ def cmd_eval(args, cfg) -> int:
     if args.out:
         Path(args.out).write_text(table, encoding="utf-8")
         print(f"wrote {args.out}")
+    _report_llm_calls(expanders)
     return 0
 
 
@@ -111,19 +151,25 @@ def cmd_replay(args, cfg) -> int:
     items = load_replay(args.replay)
     reranker = get_reranker(cfg.reranker, cfg.reranker_model)
     emb = _embedder(args.embed)
+    expanders = _expanders(args.expand, cfg)
     run_cfg = replace(cfg, chunk_size=args.chunk_size, chunk_overlap=int(args.chunk_size * 0.15))
+    tables = []
     with tempfile.TemporaryDirectory() as tmp:
-        retriever = _temp_retriever(tmp, CORPORA[args.corpus], run_cfg, emb, reranker)
-        results = [replay_mode(retriever, items, mode, args.k) for mode in _modes(reranker)]
-        n_chunks = retriever.store.count()
-        retriever.store.close()
+        store = _temp_store(tmp, CORPORA[args.corpus], run_cfg, emb)
+        n_chunks = store.count()
+        for expansion, expander in expanders:
+            retriever = Retriever(store, emb, reranker, cfg.pool, expander=expander)
+            results = [replay_mode(retriever, items, mode, args.k) for mode in _modes(reranker)]
+            tables.append(f"**Query expansion: {expansion}**\n\n" + replay_table(results, items, args.k))
+        store.close()
     header = (f"corpus `{args.corpus}` ({n_chunks} chunks), embedder `{emb.name}`, "
               f"chunk {run_cfg.chunk_size}/{run_cfg.chunk_overlap}, candidate pool {cfg.pool} per retriever")
-    table = header + "\n\n" + replay_table(results, items, args.k)
+    table = header + "\n\n" + "\n".join(tables)
     print(table)
     if args.out:
         Path(args.out).write_text(table, encoding="utf-8")
         print(f"wrote {args.out}")
+    _report_llm_calls(expanders)
     return 0
 
 
@@ -142,15 +188,18 @@ def cmd_agent_eval(args, cfg) -> int:
     qa = load_qa(args.qa)
     reranker = get_reranker(cfg.reranker, cfg.reranker_model)
     emb = _embedder(args.embed)
+    expanders = _expanders(args.expand, cfg)
     run_cfg = replace(cfg, chunk_size=args.chunk_size, chunk_overlap=int(args.chunk_size * 0.15))
     model = args.model or "openai:openai/gpt-4o-mini"
     summaries = []
     dump = open(args.dump, "a", encoding="utf-8") if args.dump else None
     with tempfile.TemporaryDirectory() as tmp:
-        retriever = _temp_retriever(tmp, CORPORA[args.corpus], run_cfg, emb, reranker)
+        store = _temp_store(tmp, CORPORA[args.corpus], run_cfg, emb)
+        retriever = Retriever(store, emb, reranker, cfg.pool, expander=expanders[0][1])
         for mode in args.modes.split(","):
             agent, deps = build_agent(model), Deps(HybridSearcher(retriever, mode))
-            label = f"{model} · {emb.name} · {args.corpus} · chunk {run_cfg.chunk_size} · pool {cfg.pool} · **{mode}**"
+            base = f"{model} · {emb.name} · {args.corpus} · chunk {run_cfg.chunk_size} · pool {cfg.pool}"
+            label = _label(base, mode, args.expand)
             cases = []
             for item in qa:
                 case = run_case(agent, deps, item)
@@ -162,7 +211,7 @@ def cmd_agent_eval(args, cfg) -> int:
                                            "checks": case.checks, "error": case.error, "output": case.output},
                                           ensure_ascii=False) + "\n")
             summaries.append(summarize(label, cases))
-        retriever.store.close()
+        store.close()
     if dump:
         dump.close()
     table = to_markdown(summaries)
@@ -170,6 +219,7 @@ def cmd_agent_eval(args, cfg) -> int:
     if args.out:
         Path(args.out).write_text(table, encoding="utf-8")
         print(f"wrote {args.out}")
+    _report_llm_calls(expanders)
     return 0
 
 
@@ -191,6 +241,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("-k", type=int)
     s.add_argument("--dept")
     s.add_argument("--entity")
+    s.add_argument("--expand", choices=EXPANDERS, help="query expansion (default: config)")
     s.set_defaults(fn=cmd_search)
 
     s = top.add_parser("eval", help="score every search mode on a QA set (evidence-based hits)")
@@ -201,6 +252,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("-k", type=int, default=3)
     s.add_argument("--out")
     s.add_argument("--pool", type=int, help="candidates per retriever before fusion/rerank (default: config)")
+    s.add_argument("--expand", default="none", help="comma list: none,glossary,llm,glossary+llm")
     s.add_argument("--show-misses", action="store_true")
     s.set_defaults(fn=cmd_eval)
 
@@ -211,6 +263,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--chunk-size", type=int, default=200)
     s.add_argument("--pool", type=int, help="candidates per retriever before fusion/rerank (default: config)")
     s.add_argument("-k", type=int, default=4)
+    s.add_argument("--expand", default="none", help="comma list: none,glossary,llm,glossary+llm")
     s.add_argument("--out")
     s.set_defaults(fn=cmd_replay)
 
@@ -222,6 +275,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--corpus", default="base", choices=tuple(CORPORA))
     s.add_argument("--chunk-size", type=int, default=200)
     s.add_argument("--pool", type=int, help="candidates per retriever before fusion/rerank (default: config)")
+    s.add_argument("--expand", default="none", choices=EXPANDERS)
     s.add_argument("--dump")
     s.add_argument("--out")
     s.set_defaults(fn=cmd_agent_eval)

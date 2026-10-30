@@ -1,0 +1,107 @@
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "annual leave full-time staff", "translation": "全職員工 年假", "ms": 2318}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "annual leave for full-time staff", "translation": "全職員工的年假", "ms": 2878}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "年假 申請 提前", "translation": "Annual leave application in advance", "ms": 2636}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "年假 申請 提前 幾耐", "translation": "How long in advance should I apply for annual leave?", "ms": 1831}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "年假 申請 提前幾耐", "translation": "How long in advance should I apply for annual leave?", "ms": 1417}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "年假 申請 提前 時間", "translation": "Annual leave application advance time", "ms": 2110}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "work from home policy", "translation": "在家工作政策", "ms": 2188}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "remote work policy", "translation": "遠程工作政策", "ms": 3445}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "working from home policy", "translation": "在家工作政策", "ms": 1295}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "taxi fare over HKD 300 approval", "translation": "超過 HKD 300 的的士費用批准", "ms": 1817}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "taxi fare approval over HKD 300", "translation": "超過 HKD 300 的的士費用批准", "ms": 1392}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "approve taxi fare over HKD 300", "translation": "批准的士費用超過 HKD 300", "ms": 1423}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "expense receipts Finance Director approval", "translation": "費用收據 Finance Director 批准", "ms": 1639}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "審批 收據", "translation": "Approval Receipt", "ms": 1421}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Finance Director expense receipts approval", "translation": "財務總監費用收據批准", "ms": 1207}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷要喺幾多日內交", "translation": "How many days do I have to submit the reimbursement?", "ms": 1943}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷 交 期限", "translation": "Reimbursement Submission Deadline", "ms": 1422}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷 提交期限", "translation": "Reimbursement submission deadline", "ms": 1479}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷 交 限期", "translation": "Reimbursement submission deadline", "ms": 1234}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "suspected customer data leak reporting time", "translation": "懷疑客戶數據洩漏報告時間", "ms": 1403}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "data breach notification", "translation": "資料洩漏通知", "ms": 1866}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "customer data leak reporting time", "translation": "客戶數據洩漏報告時間", "ms": 1454}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "data breach reporting time", "translation": "資料洩漏報告時間", "ms": 1627}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "customer data leak reporting", "translation": "客戶數據洩漏報告", "ms": 1695}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "data breach reporting timeline", "translation": "資料洩漏報告時間表", "ms": 1951}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "breach notification requirements", "translation": "違規通知要求", "ms": 1334}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "customer data leak reporting timeline", "translation": "客戶數據洩漏報告時間表", "ms": 1182}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "reporting timeline for data breaches", "translation": "數據洩露的報告時間表", "ms": 2273}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "data breach reporting requirements", "translation": "資料洩漏報告要求", "ms": 1220}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 禮物 登記", "translation": "Supplier Gift Registration", "ms": 1600}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "收供應商的禮物要登記？", "translation": "Do gifts from suppliers need to be registered?", "ms": 2351}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "收供應商 禮物 登記", "translation": "Register Supplier Gifts", "ms": 1031}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "收供應商的禮物要登記嗎", "translation": "Do gifts from suppliers need to be registered?", "ms": 1727}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "收供應商禮物登記", "translation": "Register Supplier Gifts", "ms": 1134}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 禮物 登記 政策", "translation": "Supplier Gift Registration Policy", "ms": 1594}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase orders above RMB 50,000 co-approval", "translation": "深圳 50,000 RMB 以上的採購訂單共同批准", "ms": 1173}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase orders co-approval process above RMB 50000", "translation": "深圳採購訂單共同批准流程超過 RMB 50000", "ms": 1503}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase orders co-approval above RMB 50,000", "translation": "深圳 采购订单 共同批准 超過 RMB 50,000", "ms": 1332}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase orders approval process above RMB 50,000", "translation": "深圳採購訂單批准流程超過 RMB 50,000", "ms": 1131}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase orders above RMB 50,000 co-approval process", "translation": "深圳 50,000 RMB 以上的採購訂單共同批准流程", "ms": 1795}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 收到 款項", "translation": "Supplier received payment", "ms": 1208}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 付款時間", "translation": "Supplier payment terms", "ms": 1504}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 如何付款", "translation": "Supplier How to Pay", "ms": 1205}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 付款 時間", "translation": "Supplier payment time", "ms": 1705}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 收到 款項 付款政策", "translation": "Supplier Received Payment Policy", "ms": 1531}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商款項支付時間", "translation": "Supplier payment timing", "ms": 1385}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商付款流程", "translation": "Supplier Payment Process", "ms": 1518}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商 收到款項", "translation": "Supplier received payment", "ms": 2206}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "supplier payment schedule", "translation": "供應商付款時間表", "ms": 1156}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "放大假一年有幾多日？", "translation": "How many days of annual leave are there in a year?", "ms": 1845}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "How many days of annual leave do full-time staff get?", "translation": "全職員工可以享有多少天的年假？", "ms": 1688}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "How far in advance must I request time off?", "translation": "我必須提前多久請假？", "ms": 1178}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "冇放晒嘅假可唔可以留到下年先放？", "translation": "Can the unused leave be carried over to next year?", "ms": 1886}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Do I need a doctor's note when I am off sick?", "translation": "我生病缺勤時需要醫生證明嗎？", "ms": 1809}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "When does my medical insurance start covering me?", "translation": "我的醫療保險何時開始保障我？", "ms": 1552}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "How many days a week can I work from home?", "translation": "我每週可以在家工作幾天？", "ms": 1623}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Do I have to go to the office when typhoon signal 8 is up?", "translation": "當八號風球懸掛時，我需要去辦公室嗎？", "ms": 1558}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "公司點樣處理強積金供款？", "translation": "How does the company handle MPF contributions?", "ms": 1789}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷要喺幾耐之內交？", "translation": "How long do I have to submit the reimbursement?", "ms": 1717}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Who approves a client dinner costing HKD 1,000 per person?", "translation": "誰批准每位客戶晚餐費用為 HKD 1,000？", "ms": 1767}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Which receipts need the Finance Director to sign off?", "translation": "哪些收據需要 Finance Director 簽署？", "ms": 3466}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "人民幣嘅開支用咩匯率換算？", "translation": "What exchange rate is used to convert RMB expenses?", "ms": 1225}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "When are approved expense claims paid out?", "translation": "已批准的費用申請何時支付？", "ms": 1696}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Can I expense a HKD 400 taxi ride without approval?", "translation": "我可以在沒有批准的情況下報銷一個 HKD 400 的的士車費嗎？", "ms": 1682}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "What should I do if I suspect customer data has leaked?", "translation": "如果我懷疑客戶數據洩漏，我應該怎麼做？", "ms": 1724}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "可唔可以將客戶名單 send 去自己個 Gmail？", "translation": "Can I send the customer list to my own Gmail?", "ms": 2582}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "What documents do we need before onboarding a new corporate client?", "translation": "在為新的 corporate client 進行 onboarding 之前，我們需要哪些文件？", "ms": 1619}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Do I have to declare a gift from a supplier?", "translation": "我需要申報來自供應商的禮物嗎？", "ms": 1356}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Can we send promotional emails to customers?", "translation": "我們可以向客戶發送促銷電子郵件嗎？", "ms": 1286}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "What does a new supplier in Shenzhen need to hand in?", "translation": "新的供應商在深圳需要提交什麼？", "ms": 1567}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "深圳張訂單超過五萬人民幣要邊個批？", "translation": "Who needs to approve orders over 50,000 RMB in Shenzhen?", "ms": 1436}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "How often are suppliers paid?", "translation": "供應商多久支付一次？", "ms": 1091}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "冇專票可唔可以俾錢供應商？", "translation": "Can we pay the supplier without a special invoice?", "ms": 1884}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Can an urgent order be approved verbally?", "translation": "緊急訂單可以口頭批准嗎？", "ms": 2714}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "What does FIN-07 cover?", "translation": "FIN-07 涵蓋什麼？", "ms": 1534}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "C-05 係講咩？", "translation": "What does C-05 refer to?", "ms": 1587}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Who signs off a single receipt above HKD 5,000?", "translation": "誰負責簽署單一收據超過 HKD 5,000？", "ms": 1574}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "HKD 500 以上嘅禮物要點處理？", "translation": "How to handle gifts over HKD 500?", "ms": 1295}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "RMB 50,000 order approval", "translation": "RMB 50,000 訂單批准", "ms": 1125}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "增值稅專用發票有咩用？", "translation": "What is the use of the VAT special invoice?", "ms": 1922}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Do I tell my line manager before taking annual leave?", "translation": "我是否需要在請年假之前告訴我的 line manager？", "ms": 2415}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Do we collect ultimate beneficial owner details?", "translation": "我們是否收集最終實益擁有人的詳細資料？", "ms": 1723}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Is a sick leave certificate required?", "translation": "病假證明是否需要？", "ms": 1530}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "client entertainment 有咩上限？", "translation": "Is there a limit on client entertainment?", "ms": 1645}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷期限", "translation": "Reimbursement Deadline", "ms": 1308}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "customer data leak report timeline", "translation": "客戶數據洩漏報告時間表", "ms": 1664}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商禮物 登記", "translation": "Supplier Gift Registration", "ms": 2514}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "供應商收款時間", "translation": "Supplier payment time", "ms": 5967}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷同年假 規定", "translation": "Reimbursement for Annual Leave Regulations", "ms": 1747}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷 及 年假 規定", "translation": "Reimbursement and Annual Leave Regulations", "ms": 978}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase order approval rules", "translation": "深圳採購訂單批准規則", "ms": 991}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Hong Kong taxi claims approval rules", "translation": "香港的士索償批准規則", "ms": 1637}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "cryptocurrency trading policy", "translation": "加密貨幣交易政策", "ms": 1613}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "cryptocurrency policy", "translation": "加密貨幣政策", "ms": 1283}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "員工泊車位津貼", "translation": "Employee Parking Space Allowance", "ms": 1754}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "parking allowance", "translation": "泊車津貼", "ms": 1663}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "staff bonus 2023", "translation": "員工獎金 2023", "ms": 1917}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "2023 staff bonus amount", "translation": "2023 員工獎金金額", "ms": 1159}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "收供應商的禮物 登記", "translation": "Register gifts from suppliers", "ms": 1719}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "Shenzhen purchase orders co-approval above RMB 50000", "translation": "深圳 采购订单 共同批准 超過 RMB 50000", "ms": 1596}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "報銷 同年假 規定", "translation": "Reimbursement annual leave regulations", "ms": 1241}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "同年假", "translation": "Annual Leave", "ms": 1168}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "approval rules for Shenzhen purchase orders", "translation": "深圳採購訂單的批准規則", "ms": 1095}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "approval rules for Hong Kong taxi claims", "translation": "香港的的士索償批准規則", "ms": 1777}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "公司對加密貨幣交易的政策", "translation": "Company policy on cryptocurrency trading", "ms": 1210}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "員工泊車 津貼", "translation": "Employee parking allowance", "ms": 1672}
+{"model": "openai/gpt-4o-mini", "prompt": "translate-v2", "query": "大灣區2023年獎金", "translation": "Greater Bay Area 2023 Bonus", "ms": 1011}

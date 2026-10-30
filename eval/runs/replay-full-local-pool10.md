@@ -1,5 +1,7 @@
 corpus `full` (28 chunks), embedder `local:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`, chunk 200/30, candidate pool 10 per retriever
 
+**Query expansion: none**
+
 Replayed agent queries; a query counts if the evidence chunk is in the top 4 (the agent's default k).
 
 | question | vector | keyword | hybrid | vector+rerank | hybrid+rerank |

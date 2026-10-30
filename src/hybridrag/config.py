@@ -20,10 +20,15 @@ class Config:
     pool: int = 20
     reranker: str = "cross-encoder"
     reranker_model: str = ""
+    expand: str = "glossary"
+    glossary: str = "examples/glossary.csv"
+    expand_model: str = "openai/gpt-4o-mini"
+    expand_cache: str = "eval/llm_expansions.jsonl"
 
 
 _ENV = {"RAG_DB": "db_path", "EMBED_PROVIDER": "embed_provider", "EMBED_MODEL": "embed_model",
-        "SEARCH_MODE": "mode", "RERANKER": "reranker", "RERANKER_MODEL": "reranker_model"}
+        "SEARCH_MODE": "mode", "RERANKER": "reranker", "RERANKER_MODEL": "reranker_model",
+        "EXPAND": "expand", "EXPAND_MODEL": "expand_model", "EXPAND_CACHE": "expand_cache"}
 
 
 def load_config(path: str | os.PathLike | None = None) -> Config:

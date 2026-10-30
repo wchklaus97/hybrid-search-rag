@@ -5,6 +5,12 @@
   hybrid          both lists merged with Reciprocal Rank Fusion        (fusion.py, copied from repo 2)
   *+rerank        a cross-encoder re-scores the top `pool` candidates  (rerank.py)
 
+With an expander (expand.py), each retriever also runs on every expanded query, and all
+the lists are fused together: `keyword:x1` is BM25 on the first expansion. Expansion only
+widens the candidate pool (which grows by `pool` per query version). The reranker still
+scores against the ORIGINAL query, so a loose translation can bring a chunk in but cannot
+decide the final order.
+
 Every Hit keeps `stages`: its rank and score in each list it came from, so you can see
 WHY a chunk ranked where it did.
 """
@@ -32,13 +38,22 @@ class Hit:
     stages: dict[str, tuple[int, float]] = field(default_factory=dict)  # stage -> (1-based rank, raw score)
 
 
+def _list_name(retriever: str, n: int) -> str:
+    return retriever if n == 0 else f"{retriever}:x{n}"
+
+
 class Retriever:
-    def __init__(self, store, embedder, reranker=None, pool: int = 20, fusion_method: str = "rrf"):
+    def __init__(self, store, embedder, reranker=None, pool: int = 20, fusion_method: str = "rrf", expander=None):
         self.store = store
         self.embedder = embedder
         self.reranker = reranker
         self.pool = pool
         self.fusion_method = fusion_method
+        self.expander = expander
+
+    def queries(self, query: str) -> list[str]:
+        """The original query first, then its expansions (none without an expander)."""
+        return [query, *(self.expander.expand(query) if self.expander else [])]
 
     def search(self, query: str, k: int = 3, mode: str = "hybrid+rerank",
                department: str | None = None, entity: str | None = None) -> list[Hit]:
@@ -52,13 +67,16 @@ class Retriever:
         filtering = bool(department or entity)
         depth = self.pool * (5 if filtering else 1)  # filters run after search, so dig deeper
 
+        queries = self.queries(query)
         lists: dict[str, list[tuple[int, float]]] = {}
         if mode != "keyword":
-            lists["vector"] = self.store.vector_search(self.embedder.embed([query])[0], depth)
+            for n, vec in enumerate(self.embedder.embed(queries)):
+                lists[_list_name("vector", n)] = self.store.vector_search(vec, depth)
         if mode in ("keyword", "hybrid", "hybrid+rerank"):
-            lists["keyword"] = self.store.keyword_search(tokenize(query), depth)
+            for n, q in enumerate(queries):
+                lists[_list_name("keyword", n)] = self.store.keyword_search(tokenize(q), depth)
 
-        merged = fuse(lists, self.fusion_method)  # one list in -> same order out; two lists -> RRF
+        merged = fuse(lists, self.fusion_method)  # one list in -> same order out; several lists -> RRF
         rows = self.store.get([f.key for f in merged])
         hits = [
             Hit(r.id, r.source, r.page, r.chunk_index, r.text, r.entity, r.department, f.score, dict(f.parts))
@@ -67,8 +85,10 @@ class Retriever:
         ]
 
         if mode.endswith("+rerank"):
-            candidates = hits[: self.pool]
-            scores = self.reranker.score(query, [h.text for h in candidates])
+            # Each query version brings its own pool. With a fixed pool, RRF's taste for chunks that
+            # several lists agree on pushes a chunk found by ONE expanded list just past the cut.
+            candidates = hits[: self.pool * len(queries)]
+            scores = self.reranker.score(query, [h.text for h in candidates])  # the user's words, not the expansions
             ranked = sorted(zip(candidates, scores), key=lambda pair: pair[1], reverse=True)
             for rank, (hit, s) in enumerate(ranked, start=1):
                 hit.stages["rerank"] = (rank, s)

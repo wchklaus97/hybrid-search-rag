@@ -1,0 +1,108 @@
+# Harbour Lane bilingual glossary 中英詞彙表 (fictional, for teaching)
+#
+# One concept per row; variants separated by "|". Used by `--expand glossary`: a query
+# that mentions any term of a row is also searched with the row's other terms.
+#
+# How the rows were written: the policy terms used in the ten example documents (all
+# departments, distractors included), each with its usual Hong Kong translation, e.g.
+# 資料外洩 = "data breach" as the PCPD uses it, 直接促銷 = "direct marketing". Everyday
+# Hong Kong variants are listed too (出糧, 糧單, 的士, 公幹, 專票), because staff type them.
+# Written after seeing which questions failed, so read the glossary results as
+# "what a maintained term list buys you", not as a blind test.
+en,zh
+# HR - staff handbook
+annual leave,年假
+probation|probation period,試用期
+line manager|direct supervisor,直屬主管
+working day,工作天|工作日
+sick leave,病假
+sick leave certificate|medical certificate,醫生證明|病假證明
+medical insurance,醫療保險
+MPF|Mandatory Provident Fund,強積金|強制性公積金
+employer contribution,僱主供款
+work from home,喺家工作|在家工作
+typhoon signal,颱風信號|風球
+black rainstorm warning|black rainstorm,黑色暴雨警告|黑雨
+HR|human resources,人事部|人力資源
+# Finance - expense claims (FIN-07)
+expense claim|reimbursement,報銷|報銷申請
+original receipt,正本收據
+receipt,收據|單據
+approval threshold,審批門檻
+approval|approve,批准|審批
+Finance Manager,財務經理
+Finance Director,財務總監
+director,董事
+client entertainment,客戶應酬
+taxi|taxi fare,的士|的士車費
+Greater Bay Area|GBA,大灣區
+business trip|business travel,出差|公幹
+exchange rate,匯率
+itinerary,行程單
+payment date,付款日
+HKD|Hong Kong dollar,港元|港幣
+RMB|renminbi,人民幣
+department head,部門主管
+late submission,逾期申請|逾期提交
+deadline|time limit,時限|截止日期
+# Compliance (C-02 / C-05)
+personal data,個人資料
+PDPO|Personal Data (Privacy) Ordinance|privacy ordinance,個人資料（私隱）條例|私隱條例
+data breach|data leak,資料外洩
+Compliance Officer,合規主任
+compliance,合規
+direct marketing,直接促銷
+customer due diligence|CDD,客戶盡職審查
+business registration|BR,商業登記|公司註冊
+ultimate beneficial owner|UBO,最終實益擁有人
+suspicious transaction|unusual transaction,可疑交易|異常交易
+gift,禮品|禮物
+conflict of interest,利益衝突
+# Shenzhen operations - supplier onboarding
+supplier|vendor,供應商
+supplier onboarding,供應商入網
+business licence|business license,營業執照
+purchase order|PO,採購訂單
+procurement|purchasing,採購
+co-approval|joint approval,共同批准
+head office|headquarters|HQ,總部
+Shenzhen,深圳
+Hong Kong,香港
+VAT invoice|special VAT invoice,增值稅專用發票|專票
+invoice,發票
+payment,付款|款項
+urgent order,緊急訂單
+internal settlement,內部結算
+bank account,銀行賬戶|銀行戶口
+# IT security (IT-03)
+password,密碼
+multi-factor authentication|MFA,多重認證
+lost device,遺失裝置
+incident report,事故報告
+phishing,釣魚電郵|網絡釣魚
+external storage,外置儲存
+# Payroll (FIN-02)
+pay day|payday,出糧日|出糧
+payslip,糧單
+salary,薪金|月薪|人工
+tax return,報稅表|報税表
+Inland Revenue Department|IRD,稅務局
+# Office services
+office hours,辦公時間
+meeting room,會議室
+visitor,訪客
+courier,快遞|速遞
+stationery,文具
+# HK purchasing (PRO-01) and sales (SAL-04)
+quotation,報價
+tender,招標
+discount,折扣
+Sales Manager,銷售經理
+Sales Director,銷售總監
+entertainment budget,應酬預算
+commission,佣金
+# Shenzhen staff rules
+attendance,考勤
+overtime,加班
+time off in lieu,補休|補假
+dormitory,宿舍

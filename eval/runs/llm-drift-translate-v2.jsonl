@@ -1,0 +1,84 @@
+{"query": "annual leave full-time staff", "cached": "全職員工 年假", "again": "全職員工 年假", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "annual leave for full-time staff", "cached": "全職員工的年假", "again": "全職員工的年假", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "年假 申請 提前", "cached": "Annual leave application in advance", "again": "Annual Leave Application in Advance", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "年假 申請 提前 幾耐", "cached": "How long in advance should I apply for annual leave?", "again": "How long in advance should I apply for annual leave?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "年假 申請 提前幾耐", "cached": "How long in advance should I apply for annual leave?", "again": "How long in advance should I apply for annual leave?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "年假 申請 提前 時間", "cached": "Annual leave application advance time", "again": "Annual leave application advance time", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "work from home policy", "cached": "在家工作政策", "again": "在家工作政策", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "remote work policy", "cached": "遠程工作政策", "again": "遠程工作政策", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "working from home policy", "cached": "在家工作政策", "again": "在家工作政策", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "taxi fare over HKD 300 approval", "cached": "超過 HKD 300 的的士費用批准", "again": "超過 HKD 300 的的士費用批准", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "taxi fare approval over HKD 300", "cached": "超過 HKD 300 的的士費用批准", "again": "超過 HKD 300 的的士費用批准", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "approve taxi fare over HKD 300", "cached": "批准的士費用超過 HKD 300", "again": "批准的士費用超過 HKD 300", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "expense receipts Finance Director approval", "cached": "費用收據 Finance Director 批准", "again": "費用收據 Finance Director 批准", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "審批 收據", "cached": "Approval Receipt", "again": "Approval Receipt", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Finance Director expense receipts approval", "cached": "財務總監費用收據批准", "again": "財務總監費用收據批准", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "報銷要喺幾多日內交", "cached": "How many days do I have to submit the reimbursement?", "again": "How many days do I have to submit the reimbursement?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "報銷 交 期限", "cached": "Reimbursement Submission Deadline", "again": "Reimbursement Submission Deadline", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "報銷 提交期限", "cached": "Reimbursement submission deadline", "again": "Reimbursement submission deadline", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "報銷 交 限期", "cached": "Reimbursement submission deadline", "again": "Reimbursement submission deadline", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "suspected customer data leak reporting time", "cached": "懷疑客戶數據洩漏報告時間", "again": "懷疑客戶數據洩漏報告時間", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "data breach notification", "cached": "資料洩漏通知", "again": "資料洩漏通知", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "customer data leak reporting time", "cached": "客戶數據洩漏報告時間", "again": "客戶數據洩漏報告時間", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "data breach reporting time", "cached": "資料洩漏報告時間", "again": "資料洩漏報告時間", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "customer data leak reporting", "cached": "客戶數據洩漏報告", "again": "客戶數據洩漏報告", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "data breach reporting timeline", "cached": "資料洩漏報告時間表", "again": "資料洩漏報告時間表", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "breach notification requirements", "cached": "違規通知要求", "again": "違規通知要求", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "customer data leak reporting timeline", "cached": "客戶數據洩漏報告時間表", "again": "客戶數據洩漏報告時間表", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "reporting timeline for data breaches", "cached": "數據洩露的報告時間表", "again": "數據洩露的報告時間表", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "data breach reporting requirements", "cached": "資料洩漏報告要求", "again": "資料洩漏報告要求", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 禮物 登記", "cached": "Supplier Gift Registration", "again": "Supplier Gift Registration", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "收供應商的禮物要登記？", "cached": "Do gifts from suppliers need to be registered?", "again": "Do gifts from suppliers need to be registered?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "收供應商 禮物 登記", "cached": "Register Supplier Gifts", "again": "Register Supplier Gifts", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "收供應商的禮物要登記嗎", "cached": "Do gifts from suppliers need to be registered?", "again": "Do gifts from suppliers need to be registered?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "收供應商禮物登記", "cached": "Register Supplier Gifts", "again": "Register Supplier Gifts", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 禮物 登記 政策", "cached": "Supplier Gift Registration Policy", "again": "Supplier Gift Registration Policy", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Shenzhen purchase orders above RMB 50,000 co-approval", "cached": "深圳 50,000 RMB 以上的採購訂單共同批准", "again": "深圳 50,000 RMB 以上的採購訂單共同批准", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Shenzhen purchase orders co-approval process above RMB 50000", "cached": "深圳採購訂單共同批准流程超過 RMB 50000", "again": "深圳採購訂單共同批准流程超過 RMB 50000", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Shenzhen purchase orders co-approval above RMB 50,000", "cached": "深圳 采购订单 共同批准 超過 RMB 50,000", "again": "深圳 采购订单 共同批准 超过 RMB 50,000", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Shenzhen purchase orders approval process above RMB 50,000", "cached": "深圳採購訂單批准流程超過 RMB 50,000", "again": "深圳採購訂單批准流程超過 RMB 50,000", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Shenzhen purchase orders above RMB 50,000 co-approval process", "cached": "深圳 50,000 RMB 以上的採購訂單共同批准流程", "again": "深圳 50,000 RMB 以上的採購訂單共同批准流程", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 收到 款項", "cached": "Supplier received payment", "again": "Supplier received payment", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 付款時間", "cached": "Supplier payment terms", "again": "Supplier payment terms", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 如何付款", "cached": "Supplier How to Pay", "again": "Supplier How to pay", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 付款 時間", "cached": "Supplier payment time", "again": "Supplier Payment Time", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 收到 款項 付款政策", "cached": "Supplier Received Payment Policy", "again": "Supplier Receipt Payment Policy", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商款項支付時間", "cached": "Supplier payment timing", "again": "Supplier payment timing", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商付款流程", "cached": "Supplier Payment Process", "again": "Supplier Payment Process", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "供應商 收到款項", "cached": "Supplier received payment", "again": "Supplier received payment", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "supplier payment schedule", "cached": "供應商付款時間表", "again": "供應商付款時間表", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "放大假一年有幾多日？", "cached": "How many days of annual leave are there in a year?", "again": "How many days of annual leave are there in a year?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "How many days of annual leave do full-time staff get?", "cached": "全職員工可以享有多少天的年假？", "again": "全職員工可以享有多少天的年假？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "How far in advance must I request time off?", "cached": "我必須提前多久請假？", "again": "我必須提前多久請假？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "冇放晒嘅假可唔可以留到下年先放？", "cached": "Can the unused leave be carried over to next year?", "again": "Can unused leave be carried over to next year?", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Do I need a doctor's note when I am off sick?", "cached": "我生病缺勤時需要醫生證明嗎？", "again": "我生病缺勤時需要醫生證明嗎？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "When does my medical insurance start covering me?", "cached": "我的醫療保險何時開始保障我？", "again": "我的醫療保險何時開始保障我？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "How many days a week can I work from home?", "cached": "我每週可以在家工作幾天？", "again": "我每星期可以在家工作幾天？", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Do I have to go to the office when typhoon signal 8 is up?", "cached": "當八號風球懸掛時，我需要去辦公室嗎？", "again": "當八號風球懸掛時，我需要去辦公室嗎？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "公司點樣處理強積金供款？", "cached": "How does the company handle MPF contributions?", "again": "How does the company handle MPF contributions?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "報銷要喺幾耐之內交？", "cached": "How long do I have to submit the reimbursement?", "again": "How long do I have to submit the reimbursement?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Who approves a client dinner costing HKD 1,000 per person?", "cached": "誰批准每位客戶晚餐費用為 HKD 1,000？", "again": "誰批准每位客戶晚餐費用為 HKD 1,000？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Which receipts need the Finance Director to sign off?", "cached": "哪些收據需要 Finance Director 簽署？", "again": "哪些收據需要 Finance Director 簽署？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "人民幣嘅開支用咩匯率換算？", "cached": "What exchange rate is used to convert RMB expenses?", "again": "What exchange rate is used to convert RMB expenses?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "When are approved expense claims paid out?", "cached": "已批准的費用申請何時支付？", "again": "已批准的費用申請何時支付？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Can I expense a HKD 400 taxi ride without approval?", "cached": "我可以在沒有批准的情況下報銷一個 HKD 400 的的士車費嗎？", "again": "我可以在沒有批准的情況下報銷一個 HKD 400 的的士車費嗎？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "What should I do if I suspect customer data has leaked?", "cached": "如果我懷疑客戶數據洩漏，我應該怎麼做？", "again": "如果我懷疑客戶數據已經洩漏，我應該怎麼做？", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "可唔可以將客戶名單 send 去自己個 Gmail？", "cached": "Can I send the customer list to my own Gmail?", "again": "Can I send the customer list to my own Gmail?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "What documents do we need before onboarding a new corporate client?", "cached": "在為新的 corporate client 進行 onboarding 之前，我們需要哪些文件？", "again": "在為新企業客戶入職之前，我們需要哪些文件？", "same": false, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Do I have to declare a gift from a supplier?", "cached": "我需要申報來自供應商的禮物嗎？", "again": "我需要申報來自供應商的禮物嗎？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Can we send promotional emails to customers?", "cached": "我們可以向客戶發送促銷電子郵件嗎？", "again": "我們可以向客戶發送促銷電子郵件嗎？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "What does a new supplier in Shenzhen need to hand in?", "cached": "新的供應商在深圳需要提交什麼？", "again": "新的供應商在深圳需要提交什麼？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "深圳張訂單超過五萬人民幣要邊個批？", "cached": "Who needs to approve orders over 50,000 RMB in Shenzhen?", "again": "Who needs to approve orders over 50,000 RMB in Shenzhen?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "How often are suppliers paid?", "cached": "供應商多久支付一次？", "again": "供應商多久支付一次？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "冇專票可唔可以俾錢供應商？", "cached": "Can we pay the supplier without a special invoice?", "again": "Can we pay the supplier without a special invoice?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Can an urgent order be approved verbally?", "cached": "緊急訂單可以口頭批准嗎？", "again": "緊急訂單可以口頭批准嗎？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "What does FIN-07 cover?", "cached": "FIN-07 涵蓋什麼？", "again": "FIN-07 涵蓋什麼？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "C-05 係講咩？", "cached": "What does C-05 refer to?", "again": "What does C-05 refer to?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Who signs off a single receipt above HKD 5,000?", "cached": "誰負責簽署單一收據超過 HKD 5,000？", "again": "誰負責簽署單一收據超過 HKD 5,000？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "HKD 500 以上嘅禮物要點處理？", "cached": "How to handle gifts over HKD 500?", "again": "How to handle gifts over HKD 500?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "RMB 50,000 order approval", "cached": "RMB 50,000 訂單批准", "again": "RMB 50,000 訂單批准", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "增值稅專用發票有咩用？", "cached": "What is the use of the VAT special invoice?", "again": "What is the use of the VAT special invoice?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Do I tell my line manager before taking annual leave?", "cached": "我是否需要在請年假之前告訴我的 line manager？", "again": "我是否需要在請年假之前告訴我的 line manager？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Do we collect ultimate beneficial owner details?", "cached": "我們是否收集最終實益擁有人的詳細資料？", "again": "我們是否收集最終實益擁有人的詳細資料？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "Is a sick leave certificate required?", "cached": "病假證明是否需要？", "again": "病假證明是否需要？", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}
+{"query": "client entertainment 有咩上限？", "cached": "Is there a limit on client entertainment?", "again": "Is there a limit on client entertainment?", "same": true, "cached_keeps_facts": true, "again_keeps_facts": true}

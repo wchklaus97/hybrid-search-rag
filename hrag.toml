@@ -1,4 +1,5 @@
-# Env vars override: RAG_DB, EMBED_PROVIDER, EMBED_MODEL, SEARCH_MODE, RERANKER, RERANKER_MODEL
+# Env vars override: RAG_DB, EMBED_PROVIDER, EMBED_MODEL, SEARCH_MODE, RERANKER, RERANKER_MODEL,
+#                    EXPAND, EXPAND_MODEL, EXPAND_CACHE
 
 db_path = "hrag.db"
 
@@ -14,3 +15,10 @@ mode = "hybrid+rerank"          # vector | keyword | hybrid | vector+rerank | hy
 pool = 20                       # candidates per retriever before fusion / reranking
 reranker = "cross-encoder"      # cross-encoder | none
 reranker_model = ""             # default: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+
+# Query expansion: also search in the other language (see eval/RESULTS.md section 2).
+# The glossary is free and offline; llm needs OPENAI_API_KEY (+ OPENAI_BASE_URL for OpenRouter).
+expand = "glossary"             # none | glossary | llm | glossary+llm
+glossary = "examples/glossary.csv"
+expand_model = "openai/gpt-4o-mini"         # OpenRouter name; "gpt-4o-mini" with api.openai.com
+expand_cache = "eval/llm_expansions.jsonl"  # translations are cached here, so repeat queries are free
