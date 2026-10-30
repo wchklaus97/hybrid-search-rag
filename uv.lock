@@ -10,7 +10,7 @@ resolution-markers = [
 [[package]]
 name = "agent-rag-pydantic-ai"
 version = "0.1.0"
-source = { git = "https://github.com/wchklaus97/agent-rag-pydantic-ai.git#5fd4631cc71418719c9a84c895c2982554ab606b" }
+source = { git = "https://github.com/wchklaus97/agent-rag-pydantic-ai.git?rev=553371d#553371df24253cc373a2d56ca212384d2a896d86" }
 dependencies = [
     { name = "pydantic-ai-slim", extra = ["openai"] },
     { name = "pypdf" },
@@ -463,7 +463,7 @@ local = [
 
 [package.metadata]
 requires-dist = [
-    { name = "agent-rag-pydantic-ai", marker = "extra == 'agent'", git = "https://github.com/wchklaus97/agent-rag-pydantic-ai.git" },
+    { name = "agent-rag-pydantic-ai", marker = "extra == 'agent'", git = "https://github.com/wchklaus97/agent-rag-pydantic-ai.git?rev=553371d" },
     { name = "pypdf", specifier = ">=4.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "sentence-transformers", marker = "extra == 'local'", specifier = ">=3.0" },

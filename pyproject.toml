@@ -12,7 +12,7 @@ dependencies = [
 
 [project.optional-dependencies]
 local = ["sentence-transformers>=3.0"]   # multilingual embeddings + cross-encoder reranker
-agent = ["agent-rag-pydantic-ai @ git+https://github.com/wchklaus97/agent-rag-pydantic-ai.git"]  # repo 3's agent
+agent = ["agent-rag-pydantic-ai @ git+https://github.com/wchklaus97/agent-rag-pydantic-ai.git@553371d"]  # repo 3's agent, pinned so its later changes can't move these results
 dev = ["pytest>=8"]
 
 [project.scripts]
