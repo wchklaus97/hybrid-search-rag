@@ -1,0 +1,16 @@
+{"turn": 1, "role": "user", "text": "我哋公司辦公室喺九龍灣，會議室要提前兩日預訂。", "facts": [{"key": "office", "label": "辦公室地址", "value": "九龍灣"}, {"key": "booking_lead", "label": "會議室提前預訂日數", "value": "兩日"}]}
+{"turn": 2, "role": "assistant", "text": "收到，我記住辦公室喺九龍灣，會議室要提前兩日預訂。"}
+{"turn": 3, "role": "user", "text": "Standup 幾點開始？"}
+{"turn": 4, "role": "assistant", "text": "Standup 係每日 9:30。", "facts": [{"key": "standup_time", "label": "Standup 時間", "value": "9:30"}]}
+{"turn": 5, "role": "user", "text": "我哋公司下個月搬去荃灣，之後辦公室地址就係荃灣。", "facts": [{"key": "office", "label": "辦公室地址", "value": "荃灣"}]}
+{"turn": 6, "role": "assistant", "text": "明白，辦公室地址已經更新做荃灣。"}
+{"turn": 7, "role": "user", "text": "今日天氣好唔好？"}
+{"turn": 8, "role": "assistant", "text": "我冇即時天氣資料，建議你睇天文台。"}
+{"turn": 9, "role": "user", "text": "Standup 改去 10:00 開始。", "facts": [{"key": "standup_time", "label": "Standup 時間", "value": "10:00"}]}
+{"turn": 10, "role": "assistant", "text": "已改做 10:00。"}
+{"turn": 11, "role": "user", "text": "會議室而家改做提前一日預訂，因為新樓層有專人管理。", "facts": [{"key": "booking_lead", "label": "會議室提前預訂日數", "value": "一日"}]}
+{"turn": 12, "role": "assistant", "text": "收到，會議室改為提前一日預訂。"}
+{"turn": 13, "role": "user", "text": "報銷截數係每月 5 號。", "facts": [{"key": "expense_deadline", "label": "報銷截數", "value": "每月 5 號"}]}
+{"turn": 14, "role": "assistant", "text": "記低咗，報銷截數係每月 5 號。"}
+{"turn": 15, "role": "user", "text": "而家我想攞返上個月嘅報銷單，要點做？"}
+{"turn": 16, "role": "assistant", "text": "請喺報銷系統搵返上個月嘅單再提交。"}

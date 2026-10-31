@@ -1,0 +1,6 @@
+{"id": "cur-office-zh", "kind": "current", "q": "而家辦公室喺邊度？", "expect": "荃灣"}
+{"id": "cur-standup-zh", "kind": "current", "q": "Standup 而家幾點開始？", "expect": "10:00"}
+{"id": "cur-booking-zh", "kind": "current", "q": "會議室而家要提前幾多日預訂？", "expect": "一日"}
+{"id": "cur-expense-zh", "kind": "current", "q": "報銷截數係幾號？", "expect": "5 號"}
+{"id": "hist-office-en", "kind": "history", "q": "Where was the office before we moved?", "expect": "九龍灣"}
+{"id": "hist-standup-en", "kind": "history", "q": "What was the standup time before it changed?", "expect": "9:30"}
