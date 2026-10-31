@@ -36,15 +36,19 @@ def load(path: Path) -> list[dict]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
-def superseded_notes(turns: list[dict]) -> dict[int, str]:
-    """For each turn that set a value later replaced, a note saying so (the valid_to of that fact)."""
-    notes: dict[int, str] = {}
+def superseded_notes(turns: list[dict]) -> dict[int, list[str]]:
+    """For each turn, a note per fact it set that a later turn changed (the valid_to of that fact).
+
+    A later turn only counts when the value really changes; restating the same value is not a change.
+    """
+    notes: dict[int, list[str]] = {}
     for i, t in enumerate(turns):
         for f in t.get("facts", []):
             for later in turns[i + 1:]:
-                newer = [g for g in later.get("facts", []) if g["key"] == f["key"]]
+                newer = [g for g in later.get("facts", []) if g["key"] == f["key"] and g["value"] != f["value"]]
                 if newer:
-                    notes[t["turn"]] = f"〔已過時：{f['label']} 其後於第 {later['turn']} 輪改為 {newer[0]['value']}〕"
+                    notes.setdefault(t["turn"], []).append(
+                        f"〔已過時：{f['label']} 其後於第 {later['turn']} 輪改為 {newer[0]['value']}〕")
                     break
     return notes
 
@@ -57,7 +61,7 @@ def window_chunks(turns: list[dict], stale_notes: bool = False) -> list[Chunk]:
         lines = []
         for t in span:
             line = f"第{t['turn']}輪 {t['role']}: {t['text']}"
-            lines.append(f"{line} {notes[t['turn']]}" if t["turn"] in notes else line)
+            lines.append(" ".join([line, *notes.get(t["turn"], [])]))
         chunks.append(Chunk("conversation", None, i, "\n".join(lines)))
     return chunks
 
@@ -92,6 +96,10 @@ def run_variant(name: str, chunks: list[Chunk], questions: list[dict], emb, retr
 def main() -> None:
     turns = load(here / "turns.jsonl")
     questions = load(here / "questions.jsonl")
+    if os.environ.get("EXTRACTED"):  # facts from extract.py instead of the hand labels
+        extracted = json.loads((here / "extracted_facts.json").read_text(encoding="utf-8"))
+        for t in turns:
+            t["facts"] = extracted.get(str(t["turn"]), [])
     emb = get_embedder("local", "")
     windows = window_chunks(turns)
     facts = latest_fact_chunks(turns)
@@ -127,7 +135,8 @@ def main() -> None:
         for kind in ("current", "history"):
             sub = [r for r in mine if r["kind"] == kind]
             print(f"{variant:<20} {kind:<8} top-1 {sum(r['top1_ok'] for r in sub)}/{len(sub)}   top-3 {sum(r['top3_ok'] for r in sub)}/{len(sub)}")
-    out = here / f"run-{rerank_name.split('/')[-1] if rerank_name else 'hybrid'}.json"
+    tag = ("extracted" if os.environ.get("EXTRACTED") else "labels") + "-" + (rerank_name.split("/")[-1] if rerank_name else "hybrid")
+    out = here / f"run-{tag}.json"
     out.write_text(json.dumps({"turns": len(turns), "windows": len(windows), "facts": len(facts), "rows": rows},
                               ensure_ascii=False, indent=2), encoding="utf-8")
     print("wrote", out)
