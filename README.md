@@ -12,7 +12,7 @@ Hong Kong business text mixes Chinese and English in the same sentence ("如懷�
 
 1. **Why keyword search fails on Chinese out of the box, and the fix.** SQLite FTS5 makes a whole clause one token, so searching 外洩 ("leak") finds nothing. Character bigrams fix that without a dictionary.
 2. **BM25 vs vectors.** Which questions each one wins, measured on the same evidence-based eval as [local-rag-sqlite](https://github.com/wchklaus97/local-rag-sqlite).
-3. **Hybrid fusion (RRF) and cross-encoder reranking.** Why you retrieve cheaply first, then rerank a small pool with a model that reads the query and the passage together.
+3. **Hybrid fusion (RRF) and cross-encoder reranking.** Why you retrieve cheaply first, then rerank a small pool with a model that reads the query and the passage together. The reranker is not always a gain: on public documents the default model lowered hit@3, while bge-reranker-v2-m3 did not. Choose the model by measuring it on your own corpus.
 4. **Cross-lingual query expansion.** A company glossary vs an LLM translation, compared at the same reranker budget. Why RRF buries a chunk that only one list finds, and why an LLM rewrite needs a cache and a guard (an early prompt turned HKD 500 into HKD 5,000).
 5. **Query replay.** Re-run the exact queries a real agent sent (recorded in [agent-rag-pydantic-ai](https://github.com/wchklaus97/agent-rag-pydantic-ai)) to test a new retriever with no LLM cost.
 6. **Contracts between repos.** This retriever plugs into repo 3's agent through its `Searcher` contract, and fusion reuses repo 2's lift-out `fusion.py`.
@@ -74,6 +74,7 @@ uv run hrag search "data breach notification"
 - **A deeper pool doesn't help, but a second language does.** For the "data breach" queries, the answer is not in the top 10 of either list. Also searching 資料外洩 puts it at #1 of the expanded BM25 list.
 - **The LLM translated the language, not the vocabulary.** It wrote 資料洩漏 and 數據洩漏, but the policy (like the PCPD) says 資料外洩. The glossary carries the house terms, the LLM covers phrasing nobody listed, and together they find all 10.
 - **LLM rewrites drift.** Even at temperature 0, 9 of 84 queries came back worded differently on a second pass, and an early prompt turned HKD 500 into HKD 5,000. So translations are cached and checked for changed amounts and currencies. They only widen the candidate pool; the reranker still judges with the user's own words.
+- **These numbers are not a held-out test.** The corpus is fictional, and the glossary was written after these questions failed. On public Hong Kong documents (Labour Department, IRD and data.gov.hk), the default reranker lowered hit@3 with both embedders, and hybrid without it was best. With bge-reranker-v2-m3 the same 12 questions go back to 12/12. That is one embedder and a small set. See [RESULTS section 6](eval/RESULTS.md).
 
 Other measured lessons (corpus with distractors, chunk 200, pool 5):
 

@@ -93,6 +93,8 @@ With distractors (`full`, pool 5):
 
 ## 2. Query expansion: search in both languages
 
+These numbers are on the Harbour Lane set, where the glossary was written after seeing these failures. Section 6 tests the same idea on public documents.
+
 Every failure above has one root: the question and its answer share no words. "data breach" never appears in a policy that says 資料外洩, and the small multilingual embedder does not bridge the gap for this chunk. `--expand` adds a version of the query in the other language. Each retriever runs on every version, RRF fuses all the lists, and the reranker scores the candidates against the **original** query.
 
 - **`glossary`:** [examples/glossary.csv](../examples/glossary.csv), 87 rows such as `data breach|data leak ↔ 資料外洩`. They were written from the ten documents, with the usual Hong Kong translations (the PCPD's 資料外洩 for "data breach") and everyday variants staff type (出糧, 糧單, 的士, 專票). Free and instant. The rows were written after seeing which questions failed, so read the glossary numbers as "what a maintained term list buys you", not as a blind test.
@@ -298,6 +300,39 @@ With pool 20 and a 7–28 chunk corpus, the reranker usually sees **every chunk*
 
 </details>
 
+## 6. Public Hong Kong documents (unblinded draft, not held out)
+
+Harbour Lane is fictional, and its glossary was written after these questions failed. This section runs the same pipeline on real public text:
+
+- **Documents:** the Labour Department's *Employment Ordinance concise guide* (64 pages, AES-encrypted, so ingest needs `cryptography`), the Inland Revenue Department's *Tax guide 2025-26* brief (44 pages), and the Census and Statistics Department's Head 26 spending for 2025-26 Q4 (CSV from data.gov.hk). The index holds 278 chunks: those three plus the Harbour Lane documents as distractors, at the default chunk size (400, overlap 60).
+- **Questions:** 12 lookup, number and version questions, plus 3 refusal questions whose answer is "not in the documents". The author wrote them after reading the documents, so they are **not blind**. A third person is writing a blind set from the source files alone.
+
+hit@3, 12 questions:
+
+| setting | MiniLM | Qwen3-0.6B |
+|---|---|---|
+| vector, no expansion | 0.58 | 0.75 |
+| keyword, no expansion | 0.92 | 0.92 |
+| hybrid, no expansion | 0.83 | 0.92 |
+| hybrid + rerank, no expansion | 0.75 | 0.67 |
+| vector, glossary + llm | 0.50 | 0.92 |
+| keyword, glossary + llm | 0.83 | 0.83 |
+| **hybrid, glossary + llm** | **0.92** | **1.00** |
+| hybrid + rerank, glossary + llm | 0.67 | 0.67 |
+
+- **With the default reranker (`mmarco-mMiniLMv2`), hit@3 went down with both embedders.** Hybrid without it was best: 0.92 (MiniLM) and 1.00 (Qwen3) with glossary + llm, against 0.67 with the reranker at the same expansion.
+- **The drop depends on the reranker model.** With `BAAI/bge-reranker-v2-m3` (same MiniLM candidate pool, glossary + llm, 12 questions), reranking with the original question gives 12/12, against 8/12 for mmarco and 11/12 for no reranker. Run file: `runs/rerank-check-…-bge-reranker-v2-m3-glossary-llm.json`. This is one embedder, 12 questions, and a check script, not a full `hrag eval` run. Treat it as a reason to test the reranker, not as a verdict on it.
+- **The reranker drops the answer, not the candidate pool.** The check script (`rerank_check.py`, kept outside this repo for now) builds the pool the way the retriever does. The gold chunk is in it for 12 of 12 questions with both embedders. Keeping the fused order finds it for 11/12 (MiniLM) and 12/12 (Qwen3). Reranking with the original question gives 8/12, and with the expanded question also 8/12. So the first explanation, that the reranker only reads the original question, is wrong.
+- **The likely weak link was the cross-encoder** `mmarco-mMiniLMv2-L12-H384-v1`. The bge check above (12/12) supports that. It is a hypothesis: the sample is small, and a different reranker might do worse on other questions. The misses cluster in the CSV table rows (overtime 加班費, stationery 文具, salary 薪金, CSPF), where rows share their header text and read alike.
+- **Expansion helps hybrid but costs keyword search one question.** Hybrid gains +0.09 (MiniLM) and +0.08 (Qwen3). Keyword search drops 0.92 → 0.83 with both. Vector search moves in opposite directions (MiniLM 0.58 → 0.50, Qwen3 0.75 → 0.92).
+- **Overtime (加班費) still misses under MiniLM with hybrid + glossary.** The glossary has the row, and the cause is not checked yet.
+
+Caveats:
+- One question is 0.08 at this size. Differences under about 0.2 are not firm.
+- The same author wrote the glossary and these questions, so the blind set is still needed before any claim about public documents.
+- Only two embedders ran. `gte-multilingual-base` fails with the installed transformers version, so it is not in the table.
+- Raw run files stay out of this repo until the question set is final.
+
 ## What we learned
 
 1. **Keyword search needs a tokenizer that understands Chinese.** With SQLite's default tokenizer, 外洩 matches nothing; with character bigrams it works.
@@ -308,6 +343,7 @@ With pool 20 and a 7–28 chunk corpus, the reranker usually sees **every chunk*
 6. **Depth and breadth fix different failures.** A deeper pool fixes near misses; a second language fixes vocabulary gaps. Compare them at the same reranker budget.
 7. **Translate into the company's words, not just its language.** gpt-4o-mini wrote 資料洩漏 and 數據洩漏; the policy says 資料外洩. A glossary records the house vocabulary, and the LLM covers the rest.
 8. **Never trust an LLM rewrite with an amount.** Cache it, check it (`keeps_facts`), and let the reranker judge with the user's own words.
+9. **A reranker can lower recall.** On public documents the default mmarco reranker did, with both embedders, while bge-reranker-v2-m3 did not (section 6). Pick the reranker model by measuring it on your own corpus, and compare hybrid with and without it.
 
 ## Reproduce
 
@@ -323,3 +359,32 @@ uv run hrag replay --corpus full --embed local --chunk-size 200 --pool 10      #
 uv run hrag eval --qa eval/harbour_lane_qa.jsonl --embed local --corpus full --sizes 200 --pool 5 --expand none,glossary,llm,glossary+llm --show-misses
 uv run python eval/llm_drift.py                                                # needs an API key: translates every query again
 ```
+
+## 7. Answer-level check and a second embedder on public documents (not held out)
+
+Same public corpus as section 6 (chunk 200, clean rows: each CSV row a paragraph, the two PDFs). Questions are not blind: the author wrote them after seeing the corpus.
+
+**Answer level:** repo 3's agent (gpt-4o-mini via OpenRouter) with this repo's search behind its tool, 6 questions (`public-eval/agent_public_qa.jsonl`). A pass needs the right tool call, a cited source file name, and the expected number in the answer.
+
+| run | pass | notes |
+|---|---|---|
+| vector, no expansion | 2/6 | CSPF and IRD answered with wrong numbers |
+| hybrid + rerank (mmarco), no expansion | 2/6 | overtime and CSPF answered "not found" |
+| hybrid + rerank (bge), no expansion | 3/6 | CSPF not found |
+| hybrid + rerank (bge), glossary + llm | 4/6 | CSPF not found |
+
+- **CSPF (government voluntary contribution, Q4) failed in every run.** The retrieval failure is the same one as section 6, not a scoring problem.
+- **The typhoon question scores as a fail in every run** because the scorer wants a Chinese answer to a Chinese question, and the agent answers in English. The number is right. Count it as a pass when reading the table.
+- **Calls and cost:** 8 real translation calls, 1,086 tokens. The agent's own calls were not metered, and at gpt-4o-mini prices they are far below the US$1 cap. Six questions per run means one question changes the pass rate by about 17 points.
+
+**Second embedder (gte-multilingual-base), retrieval only, clean rows, chunk 200, mmarco reranker, 12 questions:**
+
+| | MiniLM (section 6 run) | gte-multilingual-base |
+|---|---|---|
+| vector | 0.75 | 0.67 |
+| hybrid | 1.00 | 0.75 |
+| hybrid + rerank | 1.00 | 0.92 |
+
+gte does not beat MiniLM on this set. The gap is one question. Its environment also differs: gte ran with transformers 4.57.6 (downgraded in the repo's `.venv`, `pyproject.toml` not changed), and MiniLM ran with 5.22.0. The `classifier` weights warning when loading gte is expected for an embedding model.
+
+**Verdict for this set:** the answer-level result follows the retrieval result. The bge reranker helps, and CSPF is the question that retrieval still misses. The sample is 12 and 6 questions. It is evidence for choosing a configuration to test on your own corpus, not a ranking of models.
