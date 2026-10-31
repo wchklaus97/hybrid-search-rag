@@ -36,6 +36,7 @@ class Hit:
     department: str
     score: float
     stages: dict[str, tuple[int, float]] = field(default_factory=dict)  # stage -> (1-based rank, raw score)
+    period: str = ""  # e.g. "2025-26", from the document's opening text (metadata, not used for ranking)
 
 
 def _list_name(retriever: str, n: int) -> str:
@@ -43,13 +44,15 @@ def _list_name(retriever: str, n: int) -> str:
 
 
 class Retriever:
-    def __init__(self, store, embedder, reranker=None, pool: int = 20, fusion_method: str = "rrf", expander=None):
+    def __init__(self, store, embedder, reranker=None, pool: int = 20, fusion_method: str = "rrf", expander=None,
+                 min_rerank_score: float | None = None):
         self.store = store
         self.embedder = embedder
         self.reranker = reranker
         self.pool = pool
         self.fusion_method = fusion_method
         self.expander = expander
+        self.min_rerank_score = min_rerank_score  # None = never refuse; see Config.min_rerank_score
 
     def queries(self, query: str) -> list[str]:
         """The original query first, then its expansions (none without an expander)."""
@@ -79,7 +82,7 @@ class Retriever:
         merged = fuse(lists, self.fusion_method)  # one list in -> same order out; several lists -> RRF
         rows = self.store.get([f.key for f in merged])
         hits = [
-            Hit(r.id, r.source, r.page, r.chunk_index, r.text, r.entity, r.department, f.score, dict(f.parts))
+            Hit(r.id, r.source, r.page, r.chunk_index, r.text, r.entity, r.department, f.score, dict(f.parts), r.period)
             for f in merged
             if (r := rows.get(f.key)) and (not department or r.department == department) and (not entity or r.entity == entity)
         ]
@@ -94,4 +97,6 @@ class Retriever:
                 hit.stages["rerank"] = (rank, s)
                 hit.score = s
             hits = [hit for hit, _ in ranked]
+            if self.min_rerank_score is not None and hits and hits[0].score < self.min_rerank_score:
+                return []  # nothing in the corpus matches well enough: refuse rather than return a near miss
         return hits[:k]

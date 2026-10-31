@@ -24,6 +24,9 @@ class Config:
     glossary: str = "examples/glossary.csv"
     expand_model: str = "openai/gpt-4o-mini"
     expand_cache: str = "eval/llm_expansions.jsonl"
+    # Refusal: for +rerank modes, return nothing when the top reranker score is below this.
+    # Calibrated for bge-reranker-v2-m3 only (eval/RESULTS.md section 8). None = never refuse.
+    min_rerank_score: float | None = None
 
 
 _ENV = {"RAG_DB": "db_path", "EMBED_PROVIDER": "embed_provider", "EMBED_MODEL": "embed_model",

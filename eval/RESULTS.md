@@ -388,3 +388,17 @@ Same public corpus as section 6 (chunk 200, clean rows: each CSV row a paragraph
 gte does not beat MiniLM on this set. The gap is one question. Its environment also differs: gte ran with transformers 4.57.6 (downgraded in the repo's `.venv`, `pyproject.toml` not changed), and MiniLM ran with 5.22.0. The `classifier` weights warning when loading gte is expected for an embedding model.
 
 **Verdict for this set:** the answer-level result follows the retrieval result. The bge reranker helps, and CSPF is the question that retrieval still misses. The sample is 12 and 6 questions. It is evidence for choosing a configuration to test on your own corpus, not a ranking of models.
+
+## 8. Refusal threshold and period metadata
+
+**Refusal threshold.** `hrag search` in a +rerank mode can now return nothing when the top reranker score is below `min_rerank_score` (off by default, and `hrag.toml` has it commented out). Measured on the public clean-row corpus, chunk 200, with `BAAI/bge-reranker-v2-m3` (`public-eval/threshold_check.py`):
+
+- 18 answerable questions (qa_v2 + qa_mixed): top-1 score from 0.162 to 0.999.
+- 13 off-topic questions (refusal_v3, written for this check): top-1 score from 0.000 to 0.017.
+- Any cut between 0.017 and 0.162 separates them. Use **0.05**.
+
+Limits: the refusal questions are obviously off-topic (weather, Python, passports). Near-miss questions that the corpus almost covers, such as the 2026-27 budget, may score higher and get through. The threshold only fits bge. With the default mmarco reranker, scores sit on a different scale, so measure again before setting it.
+
+**Period metadata.** Each document's period (for example `2025-26`) is read from its opening 2,000 characters and stored on every chunk; `Hit.period` returns it. On the public corpus, the IRD guide and the CSV get `2025-26`; the EO guide gets none, since its opening text has no year range. Period is metadata only: it does not affect ranking or refusal. Existing indexes need `hrag reset` and a re-index, because the schema changed.
+
+**Regression check.** The clean-row eval (chunk 200, overlap 60, no expansion and glossary) gives the same hit@3 for every mode as before the change. MRR is unchanged for the non-rerank modes.

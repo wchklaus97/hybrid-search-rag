@@ -7,6 +7,7 @@ Several root folders can be indexed together (e.g. the corpus plus distractor do
 from __future__ import annotations
 
 from dataclasses import dataclass
+import re
 from pathlib import Path
 
 from pypdf import PdfReader
@@ -21,6 +22,19 @@ class Document:
     text: str
     entity: str = ""
     department: str = ""
+    period: str = ""  # e.g. "2025-26": the first fiscal or data-year range in the opening text
+
+
+_PERIOD = re.compile(r"(20\d{2})\s*[-/–]\s*(20\d{2}|\d{2})")
+
+
+def extract_period(text: str) -> str:
+    """First year range in the opening 2000 characters, normalised: 2025/26 and 2025-2026 -> 2025-26."""
+    m = _PERIOD.search(text[:2000])
+    if not m:
+        return ""
+    start, end = m.group(1), m.group(2)
+    return f"{start}-{end[-2:]}" if int(end[-2:]) == (int(start) + 1) % 100 else ""
 
 
 def org_metadata(rel_path: str) -> tuple[str, str]:
@@ -40,9 +54,10 @@ def load_documents(folder: str | Path) -> list[Document]:
         entity, dept = org_metadata(rel)
         suffix = path.suffix.lower()
         if suffix in TEXT_SUFFIXES:
-            docs.append(Document(rel, None, path.read_text(encoding="utf-8"), entity, dept))
+            text = path.read_text(encoding="utf-8")
+            docs.append(Document(rel, None, text, entity, dept, extract_period(text)))
         elif suffix == ".pdf":
             for n, page in enumerate(PdfReader(path).pages, start=1):
                 if text := (page.extract_text() or "").strip():
-                    docs.append(Document(rel, n, text, entity, dept))
+                    docs.append(Document(rel, n, text, entity, dept, extract_period(text)))
     return docs

@@ -48,3 +48,16 @@ def test_concurrent_searches_are_safe(tmp_path):
     with ThreadPoolExecutor(8) as pool:
         results = list(pool.map(lambda i: (store.keyword_search(tokenize("年假"), 5), store.vector_search([1, 0, 0], 5)), range(200)))
     assert all(len(kw) == 5 and len(vec) == 5 for kw, vec in results)
+
+
+def test_period_round_trips_through_store(tmp_path):
+    from hybridrag.chunk import Chunk
+    from hybridrag.embed import HashEmbedder
+    from hybridrag.store import Store
+
+    emb = HashEmbedder()
+    store = Store(tmp_path / "p.db", emb.name, emb.dim)
+    store.add([Chunk("ird.pdf", 1, 0, "基本免稅額 132,000", period="2025-26")], [emb.embed(["x"])[0]])
+    (row_id,) = [r[0] for r in store.db.execute("SELECT id FROM chunks")]
+    assert store.get([row_id])[row_id].period == "2025-26"
+    store.close()

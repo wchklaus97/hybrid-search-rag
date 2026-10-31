@@ -25,6 +25,17 @@ def test_rerank_reorders_and_records_rerank_stage(retriever):
     assert "HKD 300" in hits[0].text
 
 
+def test_refusal_threshold_empties_rerank_results_only(retriever):
+    retriever.min_rerank_score = 1e9  # above any score the fake reranker can give
+    assert retriever.search("taxi fare approval HKD 300", 3, "hybrid+rerank") == []
+    assert retriever.search("FIN-07", 3, "keyword")  # keyword modes have no reranker score: never refused
+
+
+def test_refusal_threshold_off_by_default(retriever):
+    assert retriever.min_rerank_score is None
+    assert retriever.search("taxi fare approval HKD 300", 3, "hybrid+rerank")
+
+
 def test_department_filter(retriever):
     hits = retriever.search("approval", 5, "hybrid", department="finance")
     assert hits and all(h.department == "finance" for h in hits)
@@ -42,3 +53,8 @@ def test_rerank_mode_without_reranker_explains(retriever):
         retriever.search("anything", 3, "hybrid+rerank")
     with pytest.raises(ValueError):
         retriever.search("anything", 3, "bogus")
+
+
+def test_period_metadata_is_returned_with_hits(retriever):
+    hits = retriever.search("FIN-07", 3, "keyword")
+    assert hits and all(isinstance(h.period, str) for h in hits)

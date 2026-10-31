@@ -22,3 +22,7 @@ expand = "glossary"             # none | glossary | llm | glossary+llm
 glossary = "examples/glossary.csv"
 expand_model = "openai/gpt-4o-mini"         # OpenRouter name; "gpt-4o-mini" with api.openai.com
 expand_cache = "eval/llm_expansions.jsonl"  # translations are cached here, so repeat queries are free
+
+# Refusal: with +rerank modes, `hrag search` returns nothing when the top reranker score is below this.
+# Calibrated for bge-reranker-v2-m3 only (eval/RESULTS.md section 8). Leave it unset for other rerankers.
+# min_rerank_score = 0.05

@@ -39,6 +39,7 @@ class Row:
     text: str
     entity: str
     department: str
+    period: str = ""
 
 
 def _pack(vec: list[float]) -> bytes:
@@ -67,13 +68,15 @@ class Store:
             CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY, value TEXT);
             CREATE TABLE IF NOT EXISTS chunks(
                 id INTEGER PRIMARY KEY, source TEXT NOT NULL, page INTEGER, chunk_index INTEGER NOT NULL,
-                text TEXT NOT NULL, entity TEXT NOT NULL DEFAULT '', department TEXT NOT NULL DEFAULT '');
+                text TEXT NOT NULL, entity TEXT NOT NULL DEFAULT '', department TEXT NOT NULL DEFAULT '',
+                period TEXT NOT NULL DEFAULT '');
             CREATE INDEX IF NOT EXISTS chunks_source ON chunks(source);
             CREATE VIRTUAL TABLE IF NOT EXISTS vec_chunks USING vec0(embedding float[{self.dim}] distance_metric=cosine);
             CREATE VIRTUAL TABLE IF NOT EXISTS fts_chunks USING fts5(tokens, tokenize="unicode61 tokenchars '-_'");
             """
         )
-        for key, value in (("embedder", f"{embedder_name}|{self.dim}"), ("tokenizer", TOKENIZER_VERSION)):
+        for key, value in (("embedder", f"{embedder_name}|{self.dim}"), ("tokenizer", TOKENIZER_VERSION),
+                           ("schema", "chunks-with-period")):  # older indexes lack the period column: reset them
             row = self.db.execute("SELECT value FROM meta WHERE key=?", (key,)).fetchone()
             if row and row[0] != value:
                 raise RuntimeError(f"Index was built with {key} {row[0]!r}, now {value!r}. Run `hrag reset` and re-index.")
@@ -85,8 +88,8 @@ class Store:
         with self._lock:
             for c, vec in zip(chunks, vectors, strict=True):
                 cur = self.db.execute(
-                    "INSERT INTO chunks(source, page, chunk_index, text, entity, department) VALUES(?,?,?,?,?,?)",
-                    (c.source, c.page, c.index, c.text, c.entity, c.department),
+                    "INSERT INTO chunks(source, page, chunk_index, text, entity, department, period) VALUES(?,?,?,?,?,?,?)",
+                    (c.source, c.page, c.index, c.text, c.entity, c.department, c.period),
                 )
                 self.db.execute("INSERT INTO vec_chunks(rowid, embedding) VALUES(?,?)", (cur.lastrowid, _pack(vec)))
                 self.db.execute("INSERT INTO fts_chunks(rowid, tokens) VALUES(?,?)", (cur.lastrowid, " ".join(tokenize(c.text))))
@@ -129,7 +132,7 @@ class Store:
         marks = ",".join("?" * len(ids))
         with self._lock:
             rows = self.db.execute(
-                f"SELECT id, source, page, chunk_index, text, entity, department FROM chunks WHERE id IN ({marks})", ids
+                f"SELECT id, source, page, chunk_index, text, entity, department, period FROM chunks WHERE id IN ({marks})", ids
             ).fetchall()
         return {r[0]: Row(*r) for r in rows}
 

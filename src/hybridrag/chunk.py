@@ -30,6 +30,7 @@ class Chunk:
     text: str
     entity: str = ""
     department: str = ""
+    period: str = ""
 
 
 def split_text(text: str, size: int = 800, overlap: int = 120) -> list[str]:
@@ -67,5 +68,5 @@ def chunk_documents(docs: list[Document], size: int, overlap: int) -> list[Chunk
     chunks: list[Chunk] = []
     for doc in docs:
         for i, piece in enumerate(split_text(doc.text, size, overlap)):
-            chunks.append(Chunk(doc.source, doc.page, i, piece, doc.entity, doc.department))
+            chunks.append(Chunk(doc.source, doc.page, i, piece, doc.entity, doc.department, doc.period))
     return chunks
