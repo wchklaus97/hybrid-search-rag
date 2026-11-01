@@ -27,6 +27,9 @@ class Config:
     # Refusal: for +rerank modes, return nothing when the top reranker score is below this.
     # Calibrated for bge-reranker-v2-m3 only (eval/RESULTS.md section 8). None = never refuse.
     min_rerank_score: float | None = None
+    # Refuse a question that names a year range (2026/27, 2026-27) that no document in the index mentions.
+    # Off by default: it is being tested on the dev set only (public-eval/dev). See LOG step 76.
+    refuse_unknown_period: bool = False
 
 
 _ENV = {"RAG_DB": "db_path", "EMBED_PROVIDER": "embed_provider", "EMBED_MODEL": "embed_model",

@@ -136,6 +136,10 @@ class Store:
             ).fetchall()
         return {r[0]: Row(*r) for r in rows}
 
+    def all_text(self) -> str:
+        with self._lock:
+            return "\n".join(r[0] for r in self.db.execute("SELECT text FROM chunks").fetchall())
+
     def count(self) -> int:
         with self._lock:
             return self.db.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]

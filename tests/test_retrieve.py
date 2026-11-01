@@ -58,3 +58,22 @@ def test_rerank_mode_without_reranker_explains(retriever):
 def test_period_metadata_is_returned_with_hits(retriever):
     hits = retriever.search("FIN-07", 3, "keyword")
     assert hits and all(isinstance(h.period, str) for h in hits)
+
+
+
+def test_unknown_year_range_is_refused_only_when_switched_on(tmp_path):
+    from hybridrag.chunk import Chunk
+    from hybridrag.embed import get_embedder
+    from hybridrag.retrieve import Retriever
+    from hybridrag.store import Store
+
+    emb = get_embedder("hash", "")
+    store = Store(tmp_path / "y.db", emb.name, emb.dim)
+    text = "課稅年度 2025/26 的利得稅稅率按兩級制計算。"
+    store.add([Chunk("ird", None, 0, text)], emb.embed([text]))
+    on = Retriever(store, emb, None, refuse_unknown_period=True)
+    off = Retriever(store, emb, None)
+    assert on.search("2026/27 的稅率是多少", 3, "hybrid") == []  # no document mentions 2026-27
+    assert on.search("2025/26 的稅率是多少", 3, "hybrid") != []  # mentioned, so answered
+    assert off.search("2026/27 的稅率是多少", 3, "hybrid") != []  # switch off: nothing refused
+    store.close()

@@ -94,7 +94,8 @@ def cmd_search(args, cfg) -> int:
         return 1
     reranker = get_reranker(cfg.reranker, cfg.reranker_model)
     expander = get_expander(args.expand or cfg.expand, cfg.glossary, cfg.expand_model, cfg.expand_cache)
-    retriever = Retriever(store, emb, reranker, cfg.pool, expander=expander, min_rerank_score=cfg.min_rerank_score)
+    retriever = Retriever(store, emb, reranker, cfg.pool, expander=expander, min_rerank_score=cfg.min_rerank_score,
+                          refuse_unknown_period=cfg.refuse_unknown_period)
     for n, q in enumerate(retriever.queries(args.question)[1:], 1):
         print(f"expanded x{n}: {q}")
     modes = _modes(reranker) if args.mode == "all" else [args.mode]
