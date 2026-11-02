@@ -1,0 +1,13 @@
+{"id": "k01", "q": "Telephones (rental) 喺 Administration 嗰行 actual 幾多？", "expected": "2,264,994.16（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 561）", "type": "number"}
+{"id": "k02", "q": "Photocopying and reproduction costs 嗰項實際開支係幾多？", "expected": "223,883.26（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 569）", "type": "number"}
+{"id": "k03", "q": "Cleaning services 實際幾多錢？", "expected": "409,685.43（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 111 Item 526）", "type": "number"}
+{"id": "k04", "q": "Electricity 嗰行 actual 係幾多？", "expected": "1,212,141.70（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 104 Item 451）", "type": "number"}
+{"id": "k05", "q": "Other hired services 嗰行 actual 幾多？", "expected": "27,676,585.84（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 111 Item 549）", "type": "number"}
+{"id": "k06", "q": "Incidental administration expenses 實際開支係幾多？", "expected": "1,189,302.83（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 579）", "type": "number"}
+{"id": "k07", "q": "Staff Welfare Fund 嗰項幾多錢？", "expected": "42,180.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 128 Item 770）", "type": "number"}
+{"id": "k08", "q": "Petrol and oil for vehicles 實際幾多？", "expected": "44,412.45（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 114 Item 580）", "type": "number"}
+{"id": "k09", "q": "Subsistence allowances（唔包括 training 同酒店）實際係幾多？", "expected": "48,411.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 560）", "type": "number"}
+{"id": "k10", "q": "年假要喺幾多日之前通知僱員日期？", "expected": "14 天（來源：EO_concise_guide_full.pdf，第四章「年假日期」）", "type": "number"}
+{"id": "k11", "q": "Subhead 999 嘅開支係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "k12", "q": "Head 27 嘅 Salaries 2025-26 Q4 係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "k13", "q": "2025-26 Q1 嘅 Staff Welfare Fund 係幾多？", "expected": "文件冇寫", "type": "refusal"}

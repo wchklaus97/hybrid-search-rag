@@ -1,0 +1,148 @@
+{
+  "d01": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "14"
+    ]
+  },
+  "d02": {
+    "type": "number",
+    "method": "manual",
+    "keys": []
+  },
+  "d03": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "12"
+    ]
+  },
+  "d04": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "d05": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "100"
+    ]
+  },
+  "d06": {
+    "type": "number",
+    "method": "manual",
+    "keys": []
+  },
+  "d07": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "1,212,141.70"
+    ]
+  },
+  "d08": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "2,264,994.16"
+    ]
+  },
+  "d09": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "186,053.68"
+    ]
+  },
+  "d10": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "3,607,661.34"
+    ]
+  },
+  "d11": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "4,006,046.25"
+    ]
+  },
+  "d12": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "44,412.45"
+    ]
+  },
+  "d13": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "495,586.34"
+    ]
+  },
+  "d14": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "10"
+    ]
+  },
+  "d15": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "12"
+    ]
+  },
+  "d16": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "d17": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "d18": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "d19": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "d20": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d21": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d22": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d23": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d24": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d25": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d26": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "d27": {
+    "type": "refusal",
+    "method": "refusal"
+  }
+}
