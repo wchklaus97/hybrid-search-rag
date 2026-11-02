@@ -28,8 +28,10 @@ class Config:
     # Calibrated for bge-reranker-v2-m3 only (eval/RESULTS.md section 8). None = never refuse.
     min_rerank_score: float | None = None
     # Refuse a question that names a year range (2026/27, 2026-27) that no document in the index mentions.
-    # Off by default: it is being tested on the dev set only (public-eval/dev). See LOG step 76.
-    refuse_unknown_period: bool = False
+    # On by default. Tested on three dev sets (public-eval/dev, LOG steps 76-80): it refused 4 more
+    # questions and no answerable question was refused. Known misses: quarters, bare years, years
+    # that appear elsewhere in the source. Set false to turn it off.
+    refuse_unknown_period: bool = True
 
 
 _ENV = {"RAG_DB": "db_path", "EMBED_PROVIDER": "embed_provider", "EMBED_MODEL": "embed_model",
