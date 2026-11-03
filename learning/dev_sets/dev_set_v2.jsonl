@@ -1,0 +1,20 @@
+{"id": "e01", "q": "辦公室 Advertisement（Administration 項）actual 幾多？", "expected": "455,313.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 570）", "type": "number"}
+{"id": "e02", "q": "Incidental administration expenses 係幾多？", "expected": "1,189,302.83（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 579）", "type": "number"}
+{"id": "e03", "q": "Rents and rates, actual amount?", "expected": "8,931,319.95（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 116 Item 600）", "type": "number"}
+{"id": "e04", "q": "招聘嘅 Advertisement（Recruiting expenses）開支幾多？", "expected": "27,090.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 124 Item 733）", "type": "number"}
+{"id": "e05", "q": "Data preparation facilities 嗰行 actual 係幾多？", "expected": "16,751,229.13（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 117 Item 612）", "type": "number"}
+{"id": "e06", "q": "Plant, furniture and equipment 嗰行幾多錢？", "expected": "592,703.73（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 121 Item 692）", "type": "number"}
+{"id": "e07", "q": "做咗少過 3 個月就離職，有冇年假？", "expected": "無（來源：EO_concise_guide_full.pdf，第四章「終止僱傭合約時年假日數」表）", "type": "lookup"}
+{"id": "e08", "q": "假日薪酬嘅每日款額係按點計？", "expected": "按「指明日期」前 12 個月內所賺取嘅每日平均工資計（來源：EO_concise_guide_full.pdf，第四章假日薪酬）", "type": "lookup"}
+{"id": "e09", "q": "產假薪酬嘅每日款額係點計？", "expected": "產假首天前 12 個月內每日平均工資嘅五分之四；如受僱期不足 12 個月，以較短期間計（來源：EO_concise_guide_full.pdf，第九章產假薪酬）", "type": "lookup"}
+{"id": "f01", "q": "2026/27 年度嘅有薪年假日數有冇改？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f02", "q": "2027/28 課稅年度嘅利得稅稅率係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f03", "q": "2026-27 第一季嘅電費開支係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f04", "q": "2024/25 第四季嘅政府開支總額係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f05", "q": "2025/26 第二季嘅 Advertisement 開支係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f06", "q": "2030 年香港最低工資係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f07", "q": "香港今日股市係升定跌？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f08", "q": "點樣申請香港護照？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f09", "q": "統計處局長嘅電郵地址係乜？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f10", "q": "新加坡嘅年假規定係點？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "f11", "q": "2026 年 4 月開始嘅物業稅增幅係幾多？", "expected": "文件冇寫", "type": "refusal"}

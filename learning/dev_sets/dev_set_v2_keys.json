@@ -1,0 +1,100 @@
+{
+  "e01": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "455,313.00"
+    ]
+  },
+  "e02": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "1,189,302.83"
+    ]
+  },
+  "e03": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "8,931,319.95"
+    ]
+  },
+  "e04": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "27,090.00"
+    ]
+  },
+  "e05": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "16,751,229.13"
+    ]
+  },
+  "e06": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "592,703.73"
+    ]
+  },
+  "e07": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "e08": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "e09": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "f01": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f02": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f03": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f04": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f05": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f06": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f07": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f08": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f09": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f10": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "f11": {
+    "type": "refusal",
+    "method": "refusal"
+  }
+}

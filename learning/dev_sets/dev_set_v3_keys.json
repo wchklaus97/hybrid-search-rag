@@ -1,0 +1,63 @@
+{
+  "g01": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "592,091.95"
+    ]
+  },
+  "g02": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "641,468.00"
+    ]
+  },
+  "g03": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "28,051.90"
+    ]
+  },
+  "g04": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "g05": {
+    "type": "lookup",
+    "method": "manual"
+  },
+  "h01": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h02": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h03": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h04": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h05": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h06": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h07": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "h08": {
+    "type": "refusal",
+    "method": "refusal"
+  }
+}

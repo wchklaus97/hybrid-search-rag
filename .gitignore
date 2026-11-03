@@ -6,3 +6,4 @@ __pycache__/
 *.db.pages/
 .env
 .env.*
+learning/results/

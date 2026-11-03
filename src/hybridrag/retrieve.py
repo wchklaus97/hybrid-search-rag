@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 
 from .cjk_tokenize import tokenize
 from .fusion import fuse
+from .ingest import year_ranges
 
 MODES = ("vector", "keyword", "hybrid", "vector+rerank", "hybrid+rerank")
 
@@ -45,7 +46,7 @@ def _list_name(retriever: str, n: int) -> str:
 
 class Retriever:
     def __init__(self, store, embedder, reranker=None, pool: int = 20, fusion_method: str = "rrf", expander=None,
-                 min_rerank_score: float | None = None):
+                 min_rerank_score: float | None = None, refuse_unknown_period: bool = False):
         self.store = store
         self.embedder = embedder
         self.reranker = reranker
@@ -53,6 +54,13 @@ class Retriever:
         self.fusion_method = fusion_method
         self.expander = expander
         self.min_rerank_score = min_rerank_score  # None = never refuse; see Config.min_rerank_score
+        self.refuse_unknown_period = refuse_unknown_period  # see Config.refuse_unknown_period
+        self._known_periods: set[str] | None = None
+
+    def _corpus_periods(self) -> set[str]:
+        if self._known_periods is None:
+            self._known_periods = year_ranges(self.store.all_text())
+        return self._known_periods
 
     def queries(self, query: str) -> list[str]:
         """The original query first, then its expansions (none without an expander)."""
@@ -66,6 +74,8 @@ class Retriever:
             raise LookupError(f"mode {mode!r} needs a reranker: pip install -e '.[local]' (or reranker = 'none' and a non-rerank mode)")
         if not query.strip() or self.store.count() == 0:
             return []
+        if self.refuse_unknown_period and not year_ranges(query) <= self._corpus_periods():
+            return []  # the question names a year range that no document in the corpus mentions
 
         filtering = bool(department or entity)
         depth = self.pool * (5 if filtering else 1)  # filters run after search, so dig deeper

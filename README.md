@@ -8,6 +8,32 @@ Hong Kong business text mixes Chinese and English in the same sentence ("如懷�
 
 > The corpus is the **fictional** Harbour Lane Group (Hong Kong head office and a Shenzhen subsidiary) used across this series, plus six fictional *distractor* documents. Nothing here is legal or HR advice.
 
+## Scope and layout
+
+**In scope:** a teaching implementation of hybrid retrieval (BM25 keyword search, vector search, Reciprocal Rank Fusion, cross-encoder reranking, query expansion), and the evaluation that shows what each part adds and where it fails.
+
+**Out of scope:** production use, and legal or HR advice. The corpus is fictional. The public-document experiments are described in [`eval/RESULTS.md`](eval/RESULTS.md) and [`learning/`](learning/).
+
+| Path | What it is |
+|---|---|
+| [`src/hybridrag/`](src/hybridrag/) | The library and the `hrag` CLI. One file per stage: `chunk`, `embed`, `store`, `ingest`, `retrieve`, `rerank`, `expand`, `fusion`, plus the lift-out `cjk_tokenize.py` |
+| [`examples/`](examples/) | The fictional Harbour Lane corpus (head office, Shenzhen subsidiary, distractor documents) and the company glossary |
+| [`eval/`](eval/) | The evidence: hand-written QA sets, the replay of the agent's recorded queries, cached LLM translations, and [`RESULTS.md`](eval/RESULTS.md) with the numbers and the reasoning |
+| [`conversation-rag/`](conversation-rag/) | A prototype that treats conversation memory as RAG. It is not part of the CLI |
+| [`learning/`](learning/) | Dev sets written from public Hong Kong documents, the scoring scripts, and [`EVAL_LESSONS.md`](learning/EVAL_LESSONS.md): how the evaluation was built and what went wrong |
+| [`tests/`](tests/) | The pytest suite |
+| [`LEARNING.md`](LEARNING.md) | The teaching text, in Traditional Chinese and English |
+| [`hrag.toml`](hrag.toml) | Default configuration |
+
+**How much to trust each number**
+- `eval/` uses the fictional corpus. The author wrote the questions and the glossary after seeing failures, so it is a tuning set, not a held-out test.
+- `learning/dev_sets/` uses public documents (the Labour Department guide, the IRD guide, and a data.gov.hk spending table). The questions were written from those documents. They measure changes; they are not a final test.
+- The blind question sets used in the evaluation are not in this repo. Some of them were written by AI models, so they only give descriptive results, not third-party validation.
+
+The public documents are not stored in the repo. [`learning/sources/SHA256SUMS`](learning/sources/SHA256SUMS) lists their hashes, so you can check your copies with `learning/verify_sources.sh`.
+
+**Where to start:** read [LEARNING.md](LEARNING.md), run the Quickstart, then read [eval/RESULTS.md](eval/RESULTS.md) and [learning/EVAL_LESSONS.md](learning/EVAL_LESSONS.md).
+
 ## What you will learn
 
 1. **Why keyword search fails on Chinese out of the box, and the fix.** SQLite FTS5 makes a whole clause one token, so searching 外洩 ("leak") finds nothing. Character bigrams fix that without a dictionary.

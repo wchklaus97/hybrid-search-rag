@@ -28,13 +28,20 @@ class Document:
 _PERIOD = re.compile(r"(20\d{2})\s*[-/–]\s*(20\d{2}|\d{2})")
 
 
+def _normalise_period(m: re.Match) -> str:
+    start, end = m.group(1), m.group(2)
+    return f"{start}-{end[-2:]}" if int(end[-2:]) == (int(start) + 1) % 100 else ""
+
+
 def extract_period(text: str) -> str:
     """First year range in the opening 2000 characters, normalised: 2025/26 and 2025-2026 -> 2025-26."""
     m = _PERIOD.search(text[:2000])
-    if not m:
-        return ""
-    start, end = m.group(1), m.group(2)
-    return f"{start}-{end[-2:]}" if int(end[-2:]) == (int(start) + 1) % 100 else ""
+    return _normalise_period(m) if m else ""
+
+
+def year_ranges(text: str) -> set[str]:
+    """Every year range in the text, normalised the same way as extract_period (2026/27 -> 2026-27)."""
+    return {p for p in (_normalise_period(m) for m in _PERIOD.finditer(text)) if p}
 
 
 def org_metadata(rel_path: str) -> tuple[str, str]:

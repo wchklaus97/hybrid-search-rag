@@ -1,0 +1,20 @@
+{"id": "r01", "q": "Subhead 115 嘅開支係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r02", "q": "Item 999 嘅 Actual 係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r03", "q": "Head 28 嘅 Personal Emoluments 係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r04", "q": "2025-26 Q2 嘅 Salaries 係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r05", "q": "2024-25 Q4 嘅 Overtime 係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r06", "q": "Data preparation facilities 有冇按月嘅 breakdown？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r07", "q": "香港 2025 年人口有幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r08", "q": "EO 有冇規定寵物假？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r09", "q": "點樣申請居屋？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r10", "q": "深圳嘅個人入息稅率係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r11", "q": "今日股票大市升定跌？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r12", "q": "2028/29 課稅年度嘅基本免稅額係幾多？", "expected": "132,000（來源：IRD_brief_guide_2025-26.pdf，「以往各年的免稅額」表，2025/26 及其後）", "type": "number"}
+{"id": "r13", "q": "IRD 幾時開始接受 WeChat Pay 繳稅？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "r14", "q": "遺產稅 2030 年嘅稅率係幾多？", "expected": "無須課徵（遺產稅已取消，2006年2月11日或之後去世者無須課徵；來源：IRD_brief_guide_2025-26.pdf「遺產稅」）", "type": "lookup"}
+{"id": "r15", "q": "點樣申請香港永久居民身份？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "c01", "q": "Rents and rates 實際幾多錢？", "expected": "8,931,319.95（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 116 Item 600）", "type": "number"}
+{"id": "c02", "q": "Data preparation facilities 嗰行 actual 係幾多？", "expected": "16,751,229.13（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 117 Item 612）", "type": "number"}
+{"id": "c03", "q": "Vehicle workshop services 實際幾多？", "expected": "64,129.12（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 125 Item 738）", "type": "number"}
+{"id": "c04", "q": "Companies Registry 嗰項實際開支係幾多？", "expected": "104,117.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 126 Item 743）", "type": "number"}
+{"id": "c05", "q": "Staff Motivation Scheme 嗰行幾多錢？", "expected": "3,167.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 129 Item 771）", "type": "number"}

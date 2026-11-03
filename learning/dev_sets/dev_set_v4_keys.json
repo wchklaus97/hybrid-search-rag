@@ -1,0 +1,84 @@
+{
+  "k01": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "2,264,994.16"
+    ]
+  },
+  "k02": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "223,883.26"
+    ]
+  },
+  "k03": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "409,685.43"
+    ]
+  },
+  "k04": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "1,212,141.70"
+    ]
+  },
+  "k05": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "27,676,585.84"
+    ]
+  },
+  "k06": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "1,189,302.83"
+    ]
+  },
+  "k07": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "42,180.00"
+    ]
+  },
+  "k08": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "44,412.45"
+    ]
+  },
+  "k09": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "48,411.00"
+    ]
+  },
+  "k10": {
+    "type": "number",
+    "method": "keys",
+    "keys": [
+      "14"
+    ]
+  },
+  "k11": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "k12": {
+    "type": "refusal",
+    "method": "refusal"
+  },
+  "k13": {
+    "type": "refusal",
+    "method": "refusal"
+  }
+}
