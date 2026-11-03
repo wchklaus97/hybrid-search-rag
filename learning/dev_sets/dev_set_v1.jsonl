@@ -1,0 +1,27 @@
+{"id": "d01", "q": "服務滿 9 年嘅僱員，有薪年假有幾多日？", "expected": "14 天（來源：EO_concise_guide_full.pdf，第四章「有薪年假」年假表）", "type": "number"}
+{"id": "d02", "q": "做咗 3 年，年假有幾多日？", "expected": "8 天（來源：EO_concise_guide_full.pdf，第四章「有薪年假」年假表）", "type": "number"}
+{"id": "d03", "q": "年假要喺滿咗 12 個月之後幾個月內放哂？", "expected": "12 個月（來源：EO_concise_guide_full.pdf，第四章「年假的發放」）", "type": "number"}
+{"id": "d04", "q": "侍產假放咗之後，僱員遲遲唔交文件，僱主可以點收返錢？", "expected": "若僱員在放取首天侍產假後的三個月內或離職時仍未提供所需文件，僱主可從僱員工資中扣回已發放的侍產假薪酬（來源：EO_concise_guide_full.pdf，第七章侍產假）", "type": "lookup"}
+{"id": "d05", "q": "慈善捐款要幾多錢以上先可以申請扣除？", "expected": "捐款總和須不少於 $100（來源：IRD_brief_guide_2025-26.pdf，獲准的扣除項目）", "type": "number"}
+{"id": "d06", "q": "居港代銷人要幾耐向稅務局申報一次代銷嘅銷售？", "expected": "每隔 3 個月（來源：IRD_brief_guide_2025-26.pdf，「代銷」段）", "type": "number"}
+{"id": "d07", "q": "Electricity 嗰一項嘅 actual 開支係幾多？", "expected": "1,212,141.70（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 104 Item 451）", "type": "number"}
+{"id": "d08", "q": "Telephones (rental) 嗰行 actual 幾多？", "expected": "2,264,994.16（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 561）", "type": "number"}
+{"id": "d09", "q": "What is the actual amount for Travel costs under Subhead 109?", "expected": "186,053.68（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 109 Item 501）", "type": "number"}
+{"id": "d10", "q": "文具同辦公室用品（office stationery）開咗幾多錢？", "expected": "3,607,661.34（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 100 Item 402）", "type": "number"}
+{"id": "d11", "q": "印刷服務嘅 recharge 係幾多？", "expected": "4,006,046.25（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 572）", "type": "number"}
+{"id": "d12", "q": "Petrol and oil for vehicles, how much?", "expected": "44,412.45（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 114 Item 580）", "type": "number"}
+{"id": "d13", "q": "Papers 呢項 actual 幾多？", "expected": "495,586.34（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 100 Item 406）", "type": "number"}
+{"id": "d14", "q": "服務滿 5 年嘅年假有幾多日？", "expected": "10 天（來源：EO_concise_guide_full.pdf，第四章年假表）", "type": "number"}
+{"id": "d15", "q": "做滿 7 年，年假幾多日？", "expected": "12 天（來源：EO_concise_guide_full.pdf，第四章年假表）", "type": "number"}
+{"id": "d16", "q": "要喺度做幾耐先至有年假？", "expected": "按連續性合約受僱每滿 12 個月（來源：EO_concise_guide_full.pdf，第四章「有薪年假」）", "type": "lookup"}
+{"id": "d17", "q": "年假日數點計？", "expected": "按僱員受僱年資由 7 天遞增至最高 14 天（來源：EO_concise_guide_full.pdf，第四章年假表）", "type": "lookup"}
+{"id": "d18", "q": "物業稅係向邊個收？", "expected": "向本港土地及／或建築物嘅擁有人（業主）徵收（來源：IRD_brief_guide_2025-26.pdf，「物業稅」課稅範圍）", "type": "lookup"}
+{"id": "d19", "q": "物業稅點樣計？", "expected": "將物業嘅應評稅淨值以標準稅率計稅（來源：IRD_brief_guide_2025-26.pdf，「物業稅」）", "type": "lookup"}
+{"id": "d20", "q": "今日香港天氣點？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d21", "q": "2026/27 課稅年度嘅利得稅稅率係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d22", "q": "Q3 2025-26 嘅電費開支係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d23", "q": "統計處嘅首席統計師係邊個？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d24", "q": "點樣喺中國註冊專利？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d25", "q": "駕駛執照嘅最低年齡係幾多歲？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d26", "q": "騰訊今日股價係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "d27", "q": "稅務局總部大樓有幾多層？", "expected": "文件冇寫", "type": "refusal"}

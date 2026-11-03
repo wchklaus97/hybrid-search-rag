@@ -1,0 +1,13 @@
+{"id": "g01", "q": "Non-local duty visits (including travel), actual amount?", "expected": "592,091.95（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 113 Item 565）", "type": "number"}
+{"id": "g02", "q": "Hire of vehicles 嗰行 actual 幾多？", "expected": "641,468.00（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 114 Item 581）", "type": "number"}
+{"id": "g03", "q": "General publications, periodicals and journals 嗰項幾多錢？", "expected": "28,051.90（來源：spending_data_head26_2025-26_Q4_en.csv，Subhead 100 Item 403）", "type": "number"}
+{"id": "g04", "q": "僱主可唔可以用工資代替未放取嘅年假？", "expected": "可以，須支付工資代替未曾放取嘅年假（來源：EO_concise_guide_full.pdf，第四章年假薪酬）", "type": "lookup"}
+{"id": "g05", "q": "年假薪酬嘅每日款額係按點計？", "expected": "按指明日期前 12 個月內所賺取嘅每日平均工資計（來源：EO_concise_guide_full.pdf，第四章年假薪酬）", "type": "lookup"}
+{"id": "h01", "q": "2026/27 課稅年度嘅薪俸稅基本免稅額係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h02", "q": "2029/30 物業稅標準稅率係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h03", "q": "2025/26 第三季嘅 Advertisement 開支係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h04", "q": "2028 年開始嘅有薪年假日數係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h05", "q": "香港現任首相係邊個？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h06", "q": "點樣申請商業登記證？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h07", "q": "2027/28 年度嘅遺產稅率係幾多？", "expected": "文件冇寫", "type": "refusal"}
+{"id": "h08", "q": "今日金價係幾多？", "expected": "文件冇寫", "type": "refusal"}
